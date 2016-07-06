@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html class="light">
+
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>写一个完美单例Singleton | coderykw</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="设计模式," />
+  
+
+  <meta name="description" content="单例模式是一种常用的软件设计模式。通过单例模式可以保证系统中一个类只有一个实例而且该实例易于外界访问，如果希望在系统中某个类的对象只能存在一个，单例模式是最好的解决方案。比如我们想创建使用一个管理工具类，这个类只有一个实例并且一直存在且不会被改变，那么我们就需要创建一个单例。下面我们一起来学习一下如何写一个比较完美的单例。
+新建一个类，继承自NSObject；
+
+
+Manager.h中
+
+
+123">
+<meta property="og:type" content="article">
+<meta property="og:title" content="写一个完美单例Singleton">
+<meta property="og:url" content="http://coderykw.com/2015/07/11/写一个完美单例Singleton/index.html">
+<meta property="og:site_name" content="coderykw">
+<meta property="og:description" content="单例模式是一种常用的软件设计模式。通过单例模式可以保证系统中一个类只有一个实例而且该实例易于外界访问，如果希望在系统中某个类的对象只能存在一个，单例模式是最好的解决方案。比如我们想创建使用一个管理工具类，这个类只有一个实例并且一直存在且不会被改变，那么我们就需要创建一个单例。下面我们一起来学习一下如何写一个比较完美的单例。
+新建一个类，继承自NSObject；
+
+
+Manager.h中
+
+
+123">
+<meta property="og:updated_time" content="2016-04-02T07:16:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="写一个完美单例Singleton">
+<meta name="twitter:description" content="单例模式是一种常用的软件设计模式。通过单例模式可以保证系统中一个类只有一个实例而且该实例易于外界访问，如果希望在系统中某个类的对象只能存在一个，单例模式是最好的解决方案。比如我们想创建使用一个管理工具类，这个类只有一个实例并且一直存在且不会被改变，那么我们就需要创建一个单例。下面我们一起来学习一下如何写一个比较完美的单例。
+新建一个类，继承自NSObject；
+
+
+Manager.h中
+
+
+123">
+
+  
+
+  
+    <link rel="icon" href="http://upload.jianshu.io/collections/images/26113/1434248199.jpg?imageMogr/thumbnail/300x300">
+  
+
+  
+    <link rel="stylesheet" href="/css/forsigner.css">
+  
+
+  <link href="/css/styles.css?v=fece7435" rel="stylesheet">
+
+  
+
+  
+
+</head>
+
+<body>
+
+  
+    <a href="#modal-one" class="toolbox-mobile">盒子</a>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-写一个完美单例Singleton" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">写一个完美单例Singleton</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2015.07.11</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>coderykw</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/OC/">OC</a>
+  </span>
+
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>单例模式是一种常用的软件设计模式。通过单例模式可以保证系统中一个类只有一个实例而且该实例易于外界访问，如果希望在系统中某个类的对象只能存在一个，单例模式是最好的解决方案。比如我们想创建使用一个管理工具类，这个类只有一个实例并且一直存在且不会被改变，那么我们就需要创建一个单例。下面我们一起来学习一下如何写一个比较完美的单例。</p>
+<p>新建一个类，继承自NSObject；</p>
+<blockquote>
+<ul>
+<li>Manager.h中</li>
+</ul>
+</blockquote>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#import &lt;Foundation/Foundation.h&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@interface</span> Manager : NSObject </span><br><span class="line"></span><br><span class="line">/<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line"> <span class="keyword">*</span>  懒汉式</span><br><span class="line"> <span class="keyword">*</span>/</span><br><span class="line">+ (instancetype)shareManager;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>Manager.m中</li>
+</ul>
+</blockquote>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"Manager.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Manager</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果不用static修饰，在别的文件可以用extern关键字引用到这个全局变量，并且可以修改它</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">id</span> _instance;</span><br><span class="line"></span><br><span class="line"><span class="meta">#pragma mark alloc方法内部会调用这个方法</span></span><br><span class="line">+ (instancetype)allocWithZone:(<span class="keyword">struct</span> _<span class="built_in">NSZone</span> *)zone</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (_instance == <span class="literal">nil</span>)     &#123;  <span class="comment">// 防止频繁加锁</span></span><br><span class="line">        <span class="keyword">@synchronized</span>(<span class="keyword">self</span>)         &#123;  <span class="comment">// 线程锁</span></span><br><span class="line">            <span class="keyword">if</span> (_instance == <span class="literal">nil</span>)             &#123; <span class="comment">// 防止创建多次</span></span><br><span class="line">                _instance = [<span class="keyword">super</span> allocWithZone:zone];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> _instance;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (instancetype)shareManager</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (_instance == <span class="literal">nil</span>) &#123;  <span class="comment">// 防止频繁加锁</span></span><br><span class="line">        <span class="keyword">@synchronized</span>(<span class="keyword">self</span>) &#123;  <span class="comment">// 线程锁</span></span><br><span class="line">            <span class="keyword">if</span> (_instance == <span class="literal">nil</span>) &#123; <span class="comment">// 防止创建多次</span></span><br><span class="line">                _instance = [[Manager alloc]init]; <span class="comment">// 这样写保证init方法也只调用一次</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> _instance;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// copy有可能会产生新对象</span></span><br><span class="line">- (<span class="keyword">id</span>)copyWithZone:(<span class="built_in">NSZone</span> *)zone</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// copy会调用- copyWithZone：</span></span><br><span class="line">    <span class="keyword">return</span> _instance;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (instancetype)init</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> _instance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>大家可能发现了，.h文件中有个注释叫做懒汉式，还有一种单例的写法叫做饿汉式，有什么区别的呢？懒汉式可以参考懒加载，是使用这个类的时候才创建，而饿汉式就是很饿很急性子，程序一运行就直接创建一个单例的对象，其实这样并不是很好，我们比较常用的还是懒汉式。上面是添加线程锁的方式写单例，我们还可以用GCD来写一个，话不多说，上代码！</p>
+<blockquote>
+<ul>
+<li>DataManager.h中</li>
+</ul>
+</blockquote>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">DataManager</span> : <span class="title">NSObject</span></span></span><br><span class="line"></span><br><span class="line">+ (instancetype)shareDataManager;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>DataManager.m中</li>
+</ul>
+</blockquote>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"DataManager.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">DataManager</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">id</span> _instance;</span><br><span class="line"></span><br><span class="line">+ (instancetype)shareDataManager</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> onceToken;</span><br><span class="line">    <span class="built_in">dispatch_once</span>(&amp;onceToken, ^&#123;</span><br><span class="line">        _instance = [[DataManager alloc]init];</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> _instance;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (instancetype)allocWithZone:(<span class="keyword">struct</span> _<span class="built_in">NSZone</span> *)zone</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="built_in">dispatch_once_t</span> onceToken;</span><br><span class="line">    <span class="built_in">dispatch_once</span>(&amp;onceToken, ^&#123;</span><br><span class="line">        _instance = [<span class="keyword">super</span> allocWithZone:zone];</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> _instance;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// copy有可能会产生新对象</span></span><br><span class="line">- (<span class="keyword">id</span>)copyWithZone:(<span class="built_in">NSZone</span> *)zone</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// copy会调用- copyWithZone：</span></span><br><span class="line">    <span class="keyword">return</span> _instance;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (instancetype)init</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> _instance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面这种方式更简便一些，也不用麻烦得进行两次判断，因为dispatch_once这个函数默认是线程安全的，因此不用考虑多线程不安全的问题。<br>最后一种，比较不常用的饿汉式，参考一下就好：</p>
+<blockquote>
+<ul>
+<li>Tool.h中</li>
+</ul>
+</blockquote>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#import &lt;Foundation/Foundation.h&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@interface</span> Tool : NSObject</span><br><span class="line">/<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line"> <span class="keyword">*</span>  饿汉式</span><br><span class="line"> <span class="keyword">*</span>/</span><br><span class="line">+ (instancetype)shareTool;</span><br><span class="line"></span><br><span class="line"><span class="meta">@end</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>Tool.m中</li>
+</ul>
+</blockquote>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"Tool.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Tool</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">id</span> _instance;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> *  当类加载到OC运行时环境中（内存），就会调用这个方法，而且只调用一次</span><br><span class="line"> */</span></span><br><span class="line">+ (<span class="keyword">void</span>)load</span><br><span class="line">&#123;</span><br><span class="line">    _instance = [[<span class="keyword">self</span> alloc]init];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (instancetype)shareTool</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> _instance;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (instancetype)allocWithZone:(<span class="keyword">struct</span> _<span class="built_in">NSZone</span> *)zone</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (_instance == <span class="literal">nil</span>) &#123; <span class="comment">// 防止创建多次</span></span><br><span class="line">        _instance = [<span class="keyword">super</span> allocWithZone:zone];</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> _instance;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// copy有可能会产生新对象</span></span><br><span class="line">- (<span class="keyword">id</span>)copyWithZone:(<span class="built_in">NSZone</span> *)zone</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// copy会调用- copyWithZone：</span></span><br><span class="line">    <span class="keyword">return</span> _instance;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (instancetype)init</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> _instance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后附加一个小小的知识点，上面用到了一个+load的方法，为什么在这个方法写呢，因为这个方法是只要程序运行起来，这个类就被添加到运行环境（内存）中了，这时候就会调用这个方法，与其类似的方法是+initialize，两个方法的区别是后者只有在我们主动使用这个类的时候才调用这个方法，相同点是两个方法都只调用一次。</p>
+
+    
+  </div>
+</article>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+ <span id="busuanzi_container_page_pv">
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</span>
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal-one" aria-hidden="true">
+  <a href="#close" class="cover" aria-hidden="true"></a>
+  <div class="modal-dialog">
+    <div class="modal-header">
+      <a href="#close" class="btn-close" aria-hidden="true">关闭</a>
+    </div>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="" data-title="写一个完美单例Singleton" data-url="http://coderykw.com/2015/07/11/写一个完美单例Singleton/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"coderykw"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?343', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

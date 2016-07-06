@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html class="light">
+
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>iOS 获取当前 WiFi 信息(swift) | coderykw</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="wifi," />
+  
+
+  <meta name="description" content="此处以 Swift 代码为例1.添加模块引用首先我们在需要获取 WiFi 信息的地方引用需要的模块：import SystemConfiguration.CaptiveNetwork2.添加获取代码接下来编写获取 WiFi 信息的代码，如下：//获取 WiFi 信息func getWifiInfo() -&amp;gt; (ssid: String, mac: String) &amp;#123;    if">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS 获取当前 WiFi 信息(swift)">
+<meta property="og:url" content="http://coderykw.com/2016/04/01/wifi/index.html">
+<meta property="og:site_name" content="coderykw">
+<meta property="og:description" content="此处以 Swift 代码为例1.添加模块引用首先我们在需要获取 WiFi 信息的地方引用需要的模块：import SystemConfiguration.CaptiveNetwork2.添加获取代码接下来编写获取 WiFi 信息的代码，如下：//获取 WiFi 信息func getWifiInfo() -&amp;gt; (ssid: String, mac: String) &amp;#123;    if">
+<meta property="og:image" content="http://7xpy20.com1.z0.glb.clouddn.com/iOS-WiF-iInfo-1.png.jpeg">
+<meta property="og:updated_time" content="2016-04-09T12:32:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS 获取当前 WiFi 信息(swift)">
+<meta name="twitter:description" content="此处以 Swift 代码为例1.添加模块引用首先我们在需要获取 WiFi 信息的地方引用需要的模块：import SystemConfiguration.CaptiveNetwork2.添加获取代码接下来编写获取 WiFi 信息的代码，如下：//获取 WiFi 信息func getWifiInfo() -&amp;gt; (ssid: String, mac: String) &amp;#123;    if">
+<meta name="twitter:image" content="http://7xpy20.com1.z0.glb.clouddn.com/iOS-WiF-iInfo-1.png.jpeg">
+
+  
+
+  
+    <link rel="icon" href="http://upload.jianshu.io/collections/images/26113/1434248199.jpg?imageMogr/thumbnail/300x300">
+  
+
+  
+    <link rel="stylesheet" href="/css/forsigner.css">
+  
+
+  <link href="/css/styles.css?v=fece7435" rel="stylesheet">
+
+  
+
+  
+
+</head>
+
+<body>
+
+  
+    <a href="#modal-one" class="toolbox-mobile">盒子</a>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-添加模块引用"><span class="toc-text">1.添加模块引用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-添加获取代码"><span class="toc-text">2.添加获取代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-获取-WiFi-信息"><span class="toc-text">3.获取 WiFi 信息</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-输出结果"><span class="toc-text">4.输出结果</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-wifi" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">iOS 获取当前 WiFi 信息(swift)</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.04.01</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>coderykw</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/swift/">swift</a>
+  </span>
+
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+        <p>此处以 Swift 代码为例</p><br><hr><br><h1 id="1-添加模块引用"><a href="#1-添加模块引用" class="headerlink" title="1.添加模块引用"></a>1.添加模块引用</h1><p>首先我们在需要获取 WiFi 信息的地方引用需要的模块：<br><figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> SystemConfiguration.CaptiveNetwork</span><br></pre></td></tr></table></figure></p><br><h1 id="2-添加获取代码"><a href="#2-添加获取代码" class="headerlink" title="2.添加获取代码"></a>2.添加获取代码</h1><p>接下来编写获取 WiFi 信息的代码，如下：<br><figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="comment">//获取 WiFi 信息</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">getWifiInfo</span><span class="params">()</span></span> -&gt; (ssid: <span class="type">String</span>, mac: <span class="type">String</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">let</span> cfas: <span class="type">NSArray</span> = <span class="type">CNCopySupportedInterfaces</span>() &#123;</span><br><span class="line">        <span class="keyword">for</span> cfa <span class="keyword">in</span> cfas &#123;</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">let</span> dict = <span class="type">CFBridgingRetain</span>(</span><br><span class="line">                <span class="type">CNCopyCurrentNetworkInfo</span>(cfa <span class="keyword">as</span>! <span class="type">CFString</span>)</span><br><span class="line">                ) &#123;</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">let</span> ssid = dict[<span class="string">“SSID”</span>] <span class="keyword">as</span>? <span class="type">String</span>,</span><br><span class="line">                    <span class="keyword">let</span> bssid = dict[<span class="string">“BSSID”</span>] <span class="keyword">as</span>? <span class="type">String</span> &#123;</span><br><span class="line">                    <span class="keyword">return</span> (ssid, bssid)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (<span class="string">“未知”</span>, <span class="string">“未知”</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><br><h1 id="3-获取-WiFi-信息"><a href="#3-获取-WiFi-信息" class="headerlink" title="3.获取 WiFi 信息"></a>3.获取 WiFi 信息</h1><p>然后在我们需要获取 WiFi 信息的位置添加如下代码即可：<br><figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> wifiInfo = getWifiInfo()</span><br><span class="line"><span class="type">NSLog</span>(<span class="string">“SSID(WiFi名称): <span class="subst">(wifiInfo.<span class="number">0</span>)</span>“</span>)</span><br><span class="line"><span class="type">NSLog</span>(<span class="string">“BSSID(Mac地址): <span class="subst">(wifiInfo.<span class="number">1</span>)</span>“</span>)</span><br></pre></td></tr></table></figure></p><br><h1 id="4-输出结果"><a href="#4-输出结果" class="headerlink" title="4.输出结果"></a>4.输出结果</h1><center><br><img src="http://7xpy20.com1.z0.glb.clouddn.com/iOS-WiF-iInfo-1.png.jpeg" alt="iOS-WiF-iInfo-1"><br></center><br><br><hr><br><p>以上。</p>
+    
+  </div>
+</article>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+ <span id="busuanzi_container_page_pv">
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</span>
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal-one" aria-hidden="true">
+  <a href="#close" class="cover" aria-hidden="true"></a>
+  <div class="modal-dialog">
+    <div class="modal-header">
+      <a href="#close" class="btn-close" aria-hidden="true">关闭</a>
+    </div>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="" data-title="iOS 获取当前 WiFi 信息(swift)" data-url="http://coderykw.com/2016/04/01/wifi/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"coderykw"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?343', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

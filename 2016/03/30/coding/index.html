@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+
+<html class="light">
+
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>coding上 搭建hexo静态博客 | coderykw</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="颜凯伟ios,iOS,设计,coderykw,颜大人,coderykw," />
+  
+
+  <meta name="description" content="Hexo 是一款基于 Node.js 的静态博客框架, 目前在 GitHub 上已有 9133 star 和 1499 fork。Hexo 生成的静态页面可以部署在 Github 或 Coding 上，并且能够免费绑定自己的域名，可以用来很方便地搭建个人博客。
+
+1，Git 安装搭建博客需要用到 git，下面这条命令可查看本机是否已安装 git，若未安装可参考这篇博文进行安装。git –versi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="coding上 搭建hexo静态博客">
+<meta property="og:url" content="http://coderykw.com/2016/03/30/coding/index.html">
+<meta property="og:site_name" content="coderykw">
+<meta property="og:description" content="Hexo 是一款基于 Node.js 的静态博客框架, 目前在 GitHub 上已有 9133 star 和 1499 fork。Hexo 生成的静态页面可以部署在 Github 或 Coding 上，并且能够免费绑定自己的域名，可以用来很方便地搭建个人博客。
+
+1，Git 安装搭建博客需要用到 git，下面这条命令可查看本机是否已安装 git，若未安装可参考这篇博文进行安装。git –versi">
+<meta property="og:updated_time" content="2016-03-30T05:20:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="coding上 搭建hexo静态博客">
+<meta name="twitter:description" content="Hexo 是一款基于 Node.js 的静态博客框架, 目前在 GitHub 上已有 9133 star 和 1499 fork。Hexo 生成的静态页面可以部署在 Github 或 Coding 上，并且能够免费绑定自己的域名，可以用来很方便地搭建个人博客。
+
+1，Git 安装搭建博客需要用到 git，下面这条命令可查看本机是否已安装 git，若未安装可参考这篇博文进行安装。git –versi">
+
+  
+
+  
+    <link rel="icon" href="http://upload.jianshu.io/collections/images/26113/1434248199.jpg?imageMogr/thumbnail/300x300">
+  
+
+  
+    <link rel="stylesheet" href="/css/forsigner.css">
+  
+
+  <link href="/css/styles.css?v=fece7435" rel="stylesheet">
+
+  
+
+  
+
+</head>
+
+<body>
+
+  
+    <a href="#modal-one" class="toolbox-mobile">盒子</a>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1，Git-安装"><span class="toc-text">1，Git 安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2，安装-Node-js"><span class="toc-text">2，安装 Node.js</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3，将-npm-的源替换成淘宝的源"><span class="toc-text">3，将 npm 的源替换成淘宝的源</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4，安装-Hexo"><span class="toc-text">4，安装 Hexo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5，安装-Server-组件"><span class="toc-text">5，安装 Server 组件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6，本地建立博客"><span class="toc-text">6，本地建立博客</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7，安装-RSS-插件（可忽略）"><span class="toc-text">7，安装 RSS 插件（可忽略）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8，本地效果预览"><span class="toc-text">8，本地效果预览</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9，部署到-Coding-Pages"><span class="toc-text">9，部署到 Coding Pages</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10，服务器效果预览"><span class="toc-text">10，服务器效果预览</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11，绑定域名"><span class="toc-text">11，绑定域名</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#12，编写博文"><span class="toc-text">12，编写博文</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#13，常见问题"><span class="toc-text">13，常见问题</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-coding" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">coding上 搭建hexo静态博客</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.03.30</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>coderykw</span>
+        </span>
+      
+
+      
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p></p><p><a href="https://github.com/hexojs/hexo" target="_blank" rel="external">Hexo</a> 是一款基于 Node.js 的静态博客框架, 目前在 GitHub 上已有 9133 star 和 1499 fork。Hexo 生成的静态页面可以部署在 Github 或 Coding 上，并且能够免费绑定自己的域名，可以用来很方便地搭建个人博客。</p><p></p>
+<p><hr></p>
+<p></p><h1 id="1，Git-安装"><a href="#1，Git-安装" class="headerlink" title="1，Git 安装"></a>1，Git 安装</h1><p>搭建博客需要用到 git，下面这条命令可查看本机是否已安装 git，若未安装可参考<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137396287703354d8c6c01c904c7d9ff056ae23da865a000/" target="_blank" rel="external">这篇博文</a>进行安装。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git –version</span><br></pre></td></tr></table></figure></p><p></p>
+<p></p><h1 id="2，安装-Node-js"><a href="#2，安装-Node-js" class="headerlink" title="2，安装 Node.js"></a>2，安装 Node.js</h1><p>Mac下最简单的做法便是直接下载pkg文件进行安装，最新版本的下载地址如下，选择后缀为pkg的文件下载安装即可：<br><a href="https://nodejs.org/download/release/latest/" target="_blank" rel="external">https://nodejs.org/download/release/latest/</a><br>完装完成后，要将以下路径计入你的系统环境变量 /usr/local/bin，步骤如下：<br>用vim 打开该文件：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span>; vi .bash_profile</span><br></pre></td></tr></table></figure></p><p></p>
+<p></p><p>在文件中加入该语句：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=/usr/<span class="built_in">local</span>/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure></p><p></p>
+<p></p><p>并保存退出，重新加载shell让设置的环境变量生效：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bash_profile</span><br></pre></td></tr></table></figure></p><p></p>
+<p></p><h1 id="3，将-npm-的源替换成淘宝的源"><a href="#3，将-npm-的源替换成淘宝的源" class="headerlink" title="3，将 npm 的源替换成淘宝的源"></a>3，将 npm 的源替换成淘宝的源</h1><p>由于众所周知的原因，国内访问官方默认 npmjs.org 源速度不是十分理想，所以建议切换成国内的，利用以下命令将其替换为淘宝的 npm 源：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry <a href="http://registry.npm.taobao.org/" target="_blank" rel="external">http://registry.npm.taobao.org/</a></span><br></pre></td></tr></table></figure></p><p></p>
+<p></p><h1 id="4，安装-Hexo"><a href="#4，安装-Hexo" class="headerlink" title="4，安装 Hexo"></a>4，安装 Hexo</h1><p>利用 npm 命令安装：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo npm install -g hexo</span><br></pre></td></tr></table></figure></p><p></p>
+<p></p><p>因为可能有文件读写权限的问题，这里推荐用 sudo，输入密码后会开始安装，时间可能比较长，耐心等待，如果长时间卡在某一步 Ctrl + C 终止当前任务后重试即可。</p><p></p>
+<p></p><h1 id="5，安装-Server-组件"><a href="#5，安装-Server-组件" class="headerlink" title="5，安装 Server 组件"></a>5，安装 Server 组件</h1><p>安装 Hexo 完成后我们在终端中执行如下命令：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo</span><br></pre></td></tr></table></figure></p><p></p>
+<p></p><p>因为这并不是一个完整的命令，所以这时我们可以看到 hexo 输出的帮助信息</p><p></p>
+<p></p><p>我们可以在左边的 Commands 列表中查看我们需要的命令是否已成功安装，因为某些版本的 Hexo 的 Server 模块需要独立安装所以这里我们并没有看到 server 命令，我们可以执行下面这条命令来进行安装，如果有的话可以跳过这一步：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo npm install hexo-server –save</span><br></pre></td></tr></table></figure></p><p></p>
+<p></p><p>如果安装过程中出现一些问题导致某些模块没有安装成功的也可以通过类似的方式单独安装某个模块进行修复。</p><p></p>
+<p></p><h1 id="6，本地建立博客"><a href="#6，本地建立博客" class="headerlink" title="6，本地建立博客"></a>6，本地建立博客</h1><p>安装完成后，新建一个目录如 myblog 用于存放博客，切换到该目录下执行以下指令，Hexo 即会在目标文件夹初步生成博客所需要的所有文件：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure></p><p></p>
+<p></p><p>网上有大量开发者们分享的模板可供选择使用，将它们的 Git 仓库 Clone 以后放到博客目录下的 themes 文件夹中即可：<br><a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="external">Github Hexo Themes</a><br><a href="http://www.zhihu.com/question/24422335" target="_blank" rel="external">有哪些好看的 Hexo 主题？</a><br>本博客的搭建我选择了使用该主题：<br><a href="https://github.com/forsigner/fexo" target="_blank" rel="external">https://github.com/forsigner/fexo</a><br>在这里对原作者 forsigner 表示感谢，🙏</p><p></p>
+<p></p><h1 id="7，安装-RSS-插件（可忽略）"><a href="#7，安装-RSS-插件（可忽略）" class="headerlink" title="7，安装 RSS 插件（可忽略）"></a>7，安装 RSS 插件（可忽略）</h1><p>到博客所在目录 myblog 下，利用该命令安装 RSS 插件，暂时不需添加 RSS 功能的同学可忽略该步骤：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo npm install hexo-generator-feed –save</span><br></pre></td></tr></table></figure></p><p></p>
+<p></p><p>编辑 myblog 目录下的 _config.yml，添加如下代码开启 RSS 功能：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rss: /atom.xml</span><br></pre></td></tr></table></figure></p><p></p>
+<p></p><p>RSS 地址保持默认即可，不需要多做修改。</p><p></p>
+<p></p><h1 id="8，本地效果预览"><a href="#8，本地效果预览" class="headerlink" title="8，本地效果预览"></a>8，本地效果预览</h1><p>在终端使用 cd 命令切换到博客所在目录 myblog，执行如下命令生成静态博客页面并启动本地服务器，若成功可在浏览器中访问 <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a> 进行预览。<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo generate</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure></p><p></p>
+<p></p><p>或者如下的缩写形式也可以：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure></p><p></p>
+<p></p><h1 id="9，部署到-Coding-Pages"><a href="#9，部署到-Coding-Pages" class="headerlink" title="9，部署到 Coding Pages"></a>9，部署到 Coding Pages</h1><p>在 Coding 新建一个项目，假设为 myblog，然后修改本地博客目录下的 _config.yml 文件，根据<a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">官方文档</a>的描述，修改以下几个参数，这些参数一般在文件底部：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line"><span class="built_in">type</span>: git               <span class="comment">#部署方式，这里我们用的是Coding的Git</span></span><br><span class="line">repo: &lt;repository url&gt;  <span class="comment">#仓库地址，例如我的是git@git.coding.net:eyrefree/myblog.git   </span></span><br><span class="line">branch: [branch]        <span class="comment">#分支名，可任意填写，我填写的是master</span></span><br><span class="line">message: [message]      <span class="comment">#可不填，这是显示在提交记录里的描述信息，默认为日期</span></span><br></pre></td></tr></table></figure></p><p></p>
+<p></p><p>参数修改完成后，我们需要在终端中切换到博客所在目录安装 deploy 组建，执行以下命令将生成的博客静态页面 push 到我们上面在 Coding 创建的 myblog 仓库中：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo npm install hexo-deployer-git –save</span><br></pre></td></tr></table></figure></p><p></p>
+<p></p><p>然后执行依次执行清理命令：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure></p><p></p>
+<p></p><p>生成命令：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure></p><p></p>
+<p></p><p>部署命令：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure></p><p></p>
+<p></p><p>如果在 _config.yml 的 repo 处填写的仓库地址是 https 形式的，在部署时可能需要输入你的 Coding 账号和密码。<br>然后切换到该项目的 Pages 标签，开启 pages 服务，分支名填写为我们在_config.yml 文件中设定的分支，我的是 master。</p><p></p>
+<p></p><h1 id="10，服务器效果预览"><a href="#10，服务器效果预览" class="headerlink" title="10，服务器效果预览"></a>10，服务器效果预览</h1><p>pages 服务开启完成后，Coding 会提供一个类似 {user_name}.coding.me/{project_name} 的链接用于访问，例如用户名为 eyrefree 项目名为 myblog 的链接应该是：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><a href="http://eyrefree.coding.me/myblog" target="_blank" rel="external">http://eyrefree.coding.me/myblog</a></span><br></pre></td></tr></table></figure></p><p></p>
+<p></p><p>访问该链接即可进行预览，由于我们引用的资源很多是和域名相关的，导致这里可能会有资源加载失败的情况，只能出现部分文字，接下来我们将域名绑定后即可恢复正常。</p><p></p>
+<p></p><h1 id="11，绑定域名"><a href="#11，绑定域名" class="headerlink" title="11，绑定域名"></a>11，绑定域名</h1><p>默认提供的链接可能过长或者不便于日常使用，我们也可以绑定自己的域名。<br>首先，需要提前准备一个域名，然后打开自己的域名控制面板，新建一个 CNAME 解析到 {user_name}.coding.me，例如我的是将 www.eyrefree.org 解析到 eyrefree.coding.me；<br>然后，打开 Coding 项目页面切换到 pages 项，填入刚才的设置解析的域名 www.eyrefree.org，点击“添加域名绑定”按钮即可，在浏览器中直接访问 www.eyrefree.org 就能成功打开。<br>有时可能由于缓存或者解析时间的问题，稍等片刻即可。 </p><p></p>
+<p></p><h1 id="12，编写博文"><a href="#12，编写博文" class="headerlink" title="12，编写博文"></a>12，编写博文</h1><p>接下来就是日常的博文编写啦，这里是使用 markdown 格式的，编写完成后添加到 source/_posts 目录下然后按照第 8 步的方法部署到 Coding 服务器即可，具体可参考<a href="http://www.jianshu.com/p/3c7ddd48bfa9" target="_blank" rel="external">这篇博文</a>，Markdown 的一些语法可以参考：<br><a href="http://wowubuntu.com/markdown/" target="_blank" rel="external">http://wowubuntu.com/markdown/</a></p><p></p>
+<p></p><h1 id="13，常见问题"><a href="#13，常见问题" class="headerlink" title="13，常见问题"></a>13，常见问题</h1><p>若执行 hexo 命令时出现如下警告信息：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&#123; [Error: Cannot find module <span class="string">‘./build/Release/DTraceProviderBindings’</span>] code: <span class="string">‘MODULE_NOT_FOUND’</span> &#125;</span><br><span class="line">&#123; [Error: Cannot find module <span class="string">‘./build/default/DTraceProviderBindings’</span>] code: <span class="string">‘MODULE_NOT_FOUND’</span> &#125;</span><br><span class="line">&#123; [Error: Cannot find module <span class="string">‘./build/Debug/DTraceProviderBindings’</span>] code: <span class="string">‘MODULE_NOT_FOUND’</span> &#125;</span><br></pre></td></tr></table></figure></p><p></p>
+<p></p><p>可以尝试执行以下命令修复：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo npm install hexo –no-optional</span><br></pre></td></tr></table></figure></p><p></p>
+<p><hr></p>
+<p></p><p>嘛，大概就是这些内容了，有遗漏的话会继续补充，😝。</p>
+
+    
+  </div>
+</article>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+ <span id="busuanzi_container_page_pv">
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</span>
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal-one" aria-hidden="true">
+  <a href="#close" class="cover" aria-hidden="true"></a>
+  <div class="modal-dialog">
+    <div class="modal-header">
+      <a href="#close" class="btn-close" aria-hidden="true">关闭</a>
+    </div>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="" data-title="coding上 搭建hexo静态博客" data-url="http://coderykw.com/2016/03/30/coding/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"coderykw"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?343', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
