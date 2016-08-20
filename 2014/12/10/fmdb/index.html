@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html class="light">
+
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>fmdb_sqlite第三方 | coderykw</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="FMDB," />
+  
+
+  <meta name="description" content="https://github.com/ccgus/fmdb        github
+由于FMDB是建立在SQLite的之上的，所以你至少也该把这篇文章从头到尾读一遍。与此同时，把SQLite的文档页 加到你的书签中。自动引用计数（APC）还是手动内存管理呢？两种都行，FMDB会在编译的时候知道你是用的哪一种，然后进行相应处理。使用方法FMDB有三个主要的类1.FMDatabase – 表示一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="fmdb_sqlite第三方">
+<meta property="og:url" content="http://coderykw.com/2014/12/10/fmdb/index.html">
+<meta property="og:site_name" content="coderykw">
+<meta property="og:description" content="https://github.com/ccgus/fmdb        github
+由于FMDB是建立在SQLite的之上的，所以你至少也该把这篇文章从头到尾读一遍。与此同时，把SQLite的文档页 加到你的书签中。自动引用计数（APC）还是手动内存管理呢？两种都行，FMDB会在编译的时候知道你是用的哪一种，然后进行相应处理。使用方法FMDB有三个主要的类1.FMDatabase – 表示一个">
+<meta property="og:updated_time" content="2016-08-20T10:38:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="fmdb_sqlite第三方">
+<meta name="twitter:description" content="https://github.com/ccgus/fmdb        github
+由于FMDB是建立在SQLite的之上的，所以你至少也该把这篇文章从头到尾读一遍。与此同时，把SQLite的文档页 加到你的书签中。自动引用计数（APC）还是手动内存管理呢？两种都行，FMDB会在编译的时候知道你是用的哪一种，然后进行相应处理。使用方法FMDB有三个主要的类1.FMDatabase – 表示一个">
+
+  
+
+  
+    <link rel="icon" href="http://upload.jianshu.io/collections/images/26113/1434248199.jpg?imageMogr/thumbnail/300x300">
+  
+
+  
+    <link rel="stylesheet" href="/css/forsigner.css">
+  
+
+  <link href="/css/styles.css?v=fece7435" rel="stylesheet">
+
+  
+
+  
+
+</head>
+
+<body>
+
+  
+    <a href="#modal-one" class="toolbox-mobile">盒子</a>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-text">使用方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#undefined"><span class="toc-text">FMDB有三个主要的类</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#undefined"><span class="toc-text">数据库创建</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#undefined"><span class="toc-text">打开数据库</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#undefined"><span class="toc-text">执行更新</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#undefined"><span class="toc-text">执行查询</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-text">事务</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#undefined"><span class="toc-text">数据净化（数据格式化）</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-fmdb" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">fmdb_sqlite第三方</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2014.12.10</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>coderykw</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/OC/">OC</a>
+  </span>
+
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p><a href="https://github.com/ccgus/fmdb" target="_blank" rel="external">https://github.com/ccgus/fmdb</a>        github</p>
+<p>由于FMDB是建立在SQLite的之上的，所以你至少也该把这篇文章从头到尾读一遍。与此同时，把SQLite的文档页 加到你的书签中。自动引用计数（APC）还是手动内存管理呢？</p><br><p>两种都行，FMDB会在编译的时候知道你是用的哪一种，然后进行相应处理。</p><br><h4>使用方法</h4><br><br><br><h5>FMDB有三个主要的类</h5><br>1.FMDatabase – 表示一个单独的SQLite数据库。 用来执行SQLite的命令。<br>2.FMResultSet – 表示FMDatabase执行查询后结果集<br>3.FMDatabaseQueue – 如果你想在多线程中执行多个查询或更新，你应该使用该类。这是线程安全的。<br><br><h5>数据库创建</h5><br>创建FMDatabase对象时参数为SQLite数据库文件路径。该路径可以是以下三种之一：<br>1..文件路径。该文件路径无需真实存，如果不存在会自动创建。<br>2..空字符串(@””)。表示会在临时目录创建一个空的数据库，当FMDatabase 链接关闭时，文件也被删除。<br>3.NULL. 将创建一个内在数据库。同样的，当FMDatabase连接关闭时，数据会被销毁。<br><br>(如需对临时数据库或内在数据库进行一步了解，请继续阅读：<a href="http://www.sqlite.org/inmemorydb.html" target="_blank" rel="external">http://www.sqlite.org/inmemorydb.html</a>)<br><br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FMDatabase <span class="keyword"><em></em></span>db = [FMDatabase databaseWithPath:<span class="comment">@”/tmp/tmp.db”];</span></span><br></pre></td></tr></table></figure><br><br><br><h5>打开数据库</h5><br>在和数据库交互 之前，数据库必须是打开的。如果资源或权限不足无法打开或创建数据库，都会导致打开失败。<br><br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (![<span class="keyword">db</span> <span class="keyword">open</span>]) &#123;    </span><br><span class="line">        [<span class="keyword">db</span> release];   </span><br><span class="line">        <span class="keyword">return</span>;    </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><br><br><br><h5>执行更新</h5><br>一切不是SELECT命令的命令都视为更新。这包括  CREATE, UPDATE, INSERT,ALTER,COMMIT, BEGIN, DETACH, DELETE, DROP, END, EXPLAIN, VACUUM, and REPLACE  （等）。<br>简单来说，只要不是以SELECT开头的命令都是UPDATE命令。<br><br>执行更新返回一个BOOL值。YES表示执行成功，否则表示有那些错误 。你可以调用 -lastErrorMessage 和 -lastErrorCode方法来得到更多信息。<br><br><h5>执行查询</h5><br>SELECT命令就是查询，执行查询的方法是以 -excuteQuery开头的。<br><br>执行查询时，如果成功返回FMResultSet对象， 错误返回nil. 与执行更新相当，支持使用 NSError**参数。同时，你也可以使用 -lastErrorCode和-lastErrorMessage获知错误信息。<br><br>为了遍历查询结果，你可以使用while循环。你还需要知道怎么跳到下一个记录。使用FMDB，很简单实现，就像这样：<br><br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="constant">FMResultSet </span>s = [db <span class="symbol">executeQuery:</span>@<span class="string">“SELECT <em> FROM myTable”</em></span>];   </span><br><span class="line"><span class="keyword">while</span> ([s <span class="keyword">next</span>]) &#123;   </span><br><span class="line">    <span class="regexp">//retrieve</span> values <span class="keyword">for</span> each record   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><br>你必须一直调用   -[FMResultSet next]   在你访问查询返回值之前，甚至你只想要一个记录：<br><br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FMResultSet s = [db <span class="string">executeQuery:</span>@<span class="string">“SELECT COUNT(<em>) FROM myTable”</em></span>];   </span><br><span class="line">  <span class="keyword">if</span> ([s next]) &#123;    </span><br><span class="line">       <span class="typename">int</span> totalCount = [s <span class="string">intForColumnIndex:</span><span class="number">0</span>];   </span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure><br><br><br>FMResultSet  提供了很多方法来获得所需的格式的值：<br><br>    intForColumn:<br>    longForColumn:<br>    longLongIntForColumn:<br>    boolForColumn:<br>    doubleForColumn:<br>    stringForColumn:<br>    dataForColumn:<br>    dataNoCopyForColumn:<br>    UTF8StringForColumnIndex:<br>    objectForColumn:<br><br>这些方法也都包括 {type}ForColumnIndex 的这样子的方法，参数是查询结果集的列的索引位置。<br><br>你无需调用  [FMResultSet close]来关闭结果集, 当新的结果集产生，或者其数据库关闭时，会自动关闭。<br><br>关闭数据库<br>当使用完数据库，你应该 -close 来关闭数据库连接来释放SQLite使用的资源。<br><br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">[db close]</span><span class="comment">;</span></span><br></pre></td></tr></table></figure><br><br><h4>事务</h4><br>FMDatabase是支持事务的。<br><h5>数据净化（数据格式化）</h5><br><br><p>使用FMDB，插入数据前，你不要花时间审查你的数据。你可以使用标准的SQLite数据绑定语法。</p><br><p>INSERT INTO myTable VALUES (?, ?, ?) </p><br><p>SQLite会识别 “?” 为一个输入的点位符， 这样的执行会接受一个可变参数（或者表示为其他参数，如NSArray, NSDictionary,或va_list等），会正确为您转义。</p><br><p>你也可以选择使用命名参数语法。</p><br><p>INSERT INTO myTable VALUES (:id, :name, :value)   </p><br><p>参数名必须以冒名开头。SQLite本身支持其他字符，当Dictionary key的内部实现是冒号开头。注意你的NSDictionary key不要包含冒号。</p><br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSDictionary argsDict = [NSDictionary <span class="string">dictionaryWithObjectsAndKeys:</span>@<span class="string">“My Name”</span>, @<span class="string">“name”</span>, nil];    </span><br><span class="line">    [db <span class="string">executeUpdate:</span>@<span class="string">“INSERT INTO myTable (name) VALUES (:name)”</span> <span class="string">withParameterDictionary:</span>argsDict];</span><br></pre></td></tr></table></figure><br><p>而且，代码不能这么写（为什么？想想吧。）</p><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[db executeUpdate:@”<span class="operator"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> myTable <span class="keyword">VALUES</span> (?)<span class="string">“, @”</span>this has \<span class="string">“ lots of ‘ bizarre \” quotes ‘“</span>];</span></span><br></pre></td></tr></table></figure><br><p>你应该：</p><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[db executeUpdate:@”<span class="operator"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> myTable <span class="keyword">VALUES</span> (?)<span class="string">“, @”</span>this has <span class="string">“ lots of ‘ bizarre “</span> quotes <span class="string">‘“];</span></span></span><br></pre></td></tr></table></figure><br><p>提供给 -executeUpdate: 方法的参数都必须是对象。就像以下的代码就无法工作，且会产生崩溃。</p><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[db executeUpdate:@”<span class="operator"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> myTable <span class="keyword">VALUES</span> (?)<span class="string">“, 42];</span></span></span><br></pre></td></tr></table></figure><br><p> 正确有做法是把数字打包成 NSNumber对象</p><br><figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="collection">[db executeUpdate:@<span class="string">“INSERT INTO myTable VALUES (?)”</span>, </span><br><span class="line"><span class="collection">[NSNumber numberWithInt:42]</span>]</span><span class="comment">;</span></span><br></pre></td></tr></table></figure><br><p>或者，你可以使用  -executeWithFormat: ，这是NSString风格的参数</p><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[db executeUpdateWithFormat:@”<span class="operator"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> myTable <span class="keyword">VALUES</span> (%<span class="keyword">d</span>)<span class="string">“, 42];</span></span></span><br></pre></td></tr></table></figure><br><p> -execute<em>WithFormat:  的方法的内部实现会帮你封装数据， 以下这些修饰符都可以使用： %@, %c, %s, %d, %D,%i, %u, %U, %hi, %hu, %qi, %qu, %f, %g, %ld, %lu, %lld, and %llu.  除此之外的修饰符可能导致无法预知的结果。 一些情况下，你需要在SQL语句中使用 % 字符，你应该使用 %%。</em></p><br><p>使用FMDatabaseQueue 及线程安全<br>在多个线程中同时使用一个FMDatabase实例是不明智的。现在你可以为每个线程创建一个FMDatabase对象。 不要让多个线程分享同一个实例，它无法在多个线程中同时使用。 若此，坏事会经常发生，程序会时不时崩溃，或者报告异常，或者陨石会从天空中掉下来砸到你Mac Pro.  总之很崩溃。所以，不要初始化FMDatabase对象，然后在多个线程中使用。请使用 FMDatabaseQueue，它是你的朋友而且会帮助你。以下是使用方法：</p><br><p>首先创建队列。</p><br><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FMDatabaseQueue queue = <span class="string">[FMDatabaseQueue databaseQueueWithPath:aPath]</span>;</span><br></pre></td></tr></table></figure><br><p>这样使用。</p><br><figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="collection">[queue inDatabase:^<span class="list">(<span class="keyword">FMDatabase</span> <em>db)</em></span> <span class="collection">&#123;    </span><br><span class="line">          <span class="collection">[db executeUpdate:@<span class="string">“INSERT INTO myTable VALUES (?)”</span>, <span class="collection">[NSNumber numberWithInt:1]</span>]</span><span class="comment">;    </span></span><br><span class="line">          <span class="collection">[db executeUpdate:@<span class="string">“INSERT INTO myTable VALUES (?)”</span>, <span class="collection">[NSNumber numberWithInt:2]</span>]</span><span class="comment">;    </span></span><br><span class="line">          <span class="collection">[db executeUpdate:@<span class="string">“INSERT INTO myTable VALUES (?)”</span>, <span class="collection">[NSNumber numberWithInt:3]</span>]</span><span class="comment">;    </span></span><br><span class="line">          FMResultSet rs = <span class="collection">[db executeQuery:@<span class="string">“select <em> from foo”</em></span>]</span><span class="comment">;    </span></span><br><span class="line">         while<span class="list">(<span class="collection">[rs next]</span>)</span> <span class="collection">&#123;   </span><br><span class="line">            …    </span><br><span class="line">         &#125;</span>    </span><br><span class="line">&#125;</span>]</span><span class="comment">;</span></span><br></pre></td></tr></table></figure><br><p>像这样，轻松地把简单任务包装到事务里：</p><br><figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="collection">[queue inTransaction:^<span class="list">(<span class="keyword">FMDatabase</span> db, BOOL <em>rollback)</em></span> <span class="collection">&#123;    </span><br><span class="line">            <span class="collection">[db executeUpdate:@<span class="string">“INSERT INTO myTable VALUES (?)”</span>, <span class="collection">[NSNumber numberWithInt:1]</span>]</span><span class="comment">;    </span></span><br><span class="line">            <span class="collection">[db executeUpdate:@<span class="string">“INSERT INTO myTable VALUES (?)”</span>, <span class="collection">[NSNumber numberWithInt:2]</span>]</span><span class="comment">;    </span></span><br><span class="line">            <span class="collection">[db executeUpdate:@<span class="string">“INSERT INTO myTable VALUES (?)”</span>, <span class="collection">[NSNumber numberWithInt:3]</span>]</span><span class="comment">;    </span></span><br><span class="line">            if <span class="list">(<span class="keyword">whoopsSomethingWrongHappened</span>)</span> <span class="collection">&#123;    </span><br><span class="line">                    rollback = YES; return;    </span><br><span class="line">            &#125;</span>   </span><br><span class="line">            // etc…    </span><br><span class="line">            <span class="collection">[db executeUpdate:@<span class="string">“INSERT INTO myTable VALUES (?)”</span>, <span class="collection">[NSNumber numberWithInt:4]</span>]</span><span class="comment">;    </span></span><br><span class="line">    &#125;</span>]</span><span class="comment">;</span></span><br></pre></td></tr></table></figure><br><p> FMDatabaseQueue  后台会建立系列化的G-C-D队列，并执行你传给G-C-D队列的块。这意味着 你从多线程同时调用调用方法，GDC也会按它接收的块的顺序来执行。谁也不会吵到谁的脚 ，每个人都幸福。</p><br><p>—-转载自FMDB官方文档</p>
+    
+  </div>
+</article>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+ <span id="busuanzi_container_page_pv">
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</span>
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal-one" aria-hidden="true">
+  <a href="#close" class="cover" aria-hidden="true"></a>
+  <div class="modal-dialog">
+    <div class="modal-header">
+      <a href="#close" class="btn-close" aria-hidden="true">关闭</a>
+    </div>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="" data-title="fmdb_sqlite第三方" data-url="http://coderykw.com/2014/12/10/fmdb/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"coderykw"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?343', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
