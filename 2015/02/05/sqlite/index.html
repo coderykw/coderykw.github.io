@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="light">
+
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>iOS的SQLite简单使用 | coderykw</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="sqlite," />
+  
+
+  <meta name="description" content="我们在开发过程中数据库是肯定需要使用的，其中移动开发过程中使用最多的可能就是SQLite了，本文就介绍一下iOS中如何使用SQlite。SQLite，是一款轻型的数据库，是遵守ACID的关系型数据库管理系统，它的设计目标是嵌入式的，而且目前已经在很多嵌入式产品中使用了它，它占用资源非常的低，在嵌入式设备中，可能只需要几百K的内存就够了。它能够支持Windows/Linux/Unix等等主流的操作系">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS的SQLite简单使用">
+<meta property="og:url" content="http://coderykw.com/2015/02/05/sqlite/index.html">
+<meta property="og:site_name" content="coderykw">
+<meta property="og:description" content="我们在开发过程中数据库是肯定需要使用的，其中移动开发过程中使用最多的可能就是SQLite了，本文就介绍一下iOS中如何使用SQlite。SQLite，是一款轻型的数据库，是遵守ACID的关系型数据库管理系统，它的设计目标是嵌入式的，而且目前已经在很多嵌入式产品中使用了它，它占用资源非常的低，在嵌入式设备中，可能只需要几百K的内存就够了。它能够支持Windows/Linux/Unix等等主流的操作系">
+<meta property="og:updated_time" content="2016-08-20T10:29:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS的SQLite简单使用">
+<meta name="twitter:description" content="我们在开发过程中数据库是肯定需要使用的，其中移动开发过程中使用最多的可能就是SQLite了，本文就介绍一下iOS中如何使用SQlite。SQLite，是一款轻型的数据库，是遵守ACID的关系型数据库管理系统，它的设计目标是嵌入式的，而且目前已经在很多嵌入式产品中使用了它，它占用资源非常的低，在嵌入式设备中，可能只需要几百K的内存就够了。它能够支持Windows/Linux/Unix等等主流的操作系">
+
+  
+
+  
+    <link rel="icon" href="http://upload.jianshu.io/collections/images/26113/1434248199.jpg?imageMogr/thumbnail/300x300">
+  
+
+  
+    <link rel="stylesheet" href="/css/forsigner.css">
+  
+
+  <link href="/css/styles.css?v=fece7435" rel="stylesheet">
+
+  
+
+  
+
+</head>
+
+<body>
+
+  
+    <a href="#modal-one" class="toolbox-mobile">盒子</a>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">SQLite的特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">SQLite在iOS中的基本使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">数据库加密</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">事务操作</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-sqlite" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">iOS的SQLite简单使用</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2015.02.05</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>coderykw</span>
+        </span>
+      
+
+      
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>我们在开发过程中数据库是肯定需要使用的，其中移动开发过程中使用最多的可能就是SQLite了，本文就介绍一下iOS中如何使用SQlite。</p><br><p>SQLite，是一款轻型的数据库，是遵守ACID的关系型数据库管理系统，它的设计目标是嵌入式的，而且目前已经在很多嵌入式产品中使用了它，它占用资源非常的低，在嵌入式设备中，可能只需要几百K的内存就够了。它能够支持Windows/Linux/Unix等等主流的操作系统，同时能够跟很多程序语言相结合，比如 Tcl、C#、PHP、Java等，还有ODBC接口，同样比起Mysql、PostgreSQL这两款开源的世界著名数据库管理系统来讲，它的处理速度比他们都快。SQLite第一个Alpha版本诞生于2000年5月。 至今已经有14个年头，SQLite也迎来了一个版本 SQLite 3已经发布。</p><br><h3>SQLite的特性</h3><br><br><ol><br><li>ACID事务 （注：①）</li><br><li>零配置 – 无需安装和管理配置</li><br><li>储存在单一磁盘文件中的一个完整的数据库</li><br><li>数据库文件可以在不同字节顺序的机器间自由的共享</li><br><li>支持数据库大小至2TB</li><br><li>足够小, 大致13万行C代码, 4.43M</li><br><li>比一些流行的数据库在大部分普通数据库操作要快</li><br><li>简单, 轻松的API</li><br><li>包含TCL绑定, 同时通过Wrapper支持其他语言的绑定</li><br><li>良好注释的源代码, 并且有着90%以上的测试覆盖率</li><br><li>独立，没有额外依赖</li><br><li>源码完全的开源, 你可以用于任何用途, 包括出售它</li><br><li>支持多种开发语言,C, PHP, Perl, Java, C#,Python, Ruby</li><br></ol><br><p></p><h3>SQLite在iOS中的基本使用</h3><p></p><br><p>在iOS开发中可以用一些SQLite数据库管理工具，例如SQLiteManager。<br><br>接下来就通过代码来讲述iOS中如何使用sqlite<br><br>sqlite.h文件的引入<br><br>首先是打开和关闭数据库，打开和创建数据库都是sqlite3_open函数，如果filename已经创建那就是打开。</p>
+
+<p><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSString</span> <em>filename;<span class="comment">//数据库文件路径</span></em></span><br><span class="line">sqlite3 database; <span class="comment">//sqlite3数据库句柄的指针</span></span><br><span class="line"><span class="comment">//打开数据库</span></span><br><span class="line">- (<span class="keyword">int</span>) open&#123;</span><br><span class="line">    <span class="keyword">int</span> rc=sqlite3_open([filename UTF8String], &amp;amp;database);</span><br><span class="line">    <span class="keyword">if</span> (rc) &#123;</span><br><span class="line">        sqlite3_close(database);</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@”open database failed”</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> rc;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//关闭数据库</span></span><br><span class="line">- (<span class="keyword">void</span>) close&#123;</span><br><span class="line">    <span class="keyword">if</span> (database!=<span class="literal">NULL</span>) &#123;</span><br><span class="line">        sqlite3_close(database);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>接下来插入、删除、更新都是用sqlite3_exec函数，记住执行语句，必须要先打开数据库，完成之后需要关闭数据库。</p>
+
+<p><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//执行 insert,update,delete 等非查询SQL语句</span></span><br><span class="line"> - (<span class="keyword">int</span>)executeNonQuery:(<span class="built_in">NSString</span> <em>)sql error:(<span class="built_in">NSError</span> **)error &#123;</em></span><br><span class="line">     <span class="keyword">int</span> rc;</span><br><span class="line">     <span class="keyword">char</span> errmsg;</span><br><span class="line">     rc = [<span class="keyword">self</span> open];</span><br><span class="line">     <span class="keyword">if</span> (rc) &#123; </span><br><span class="line"><span class="comment">//错误处理</span></span><br><span class="line">     <span class="keyword">if</span> (error != <span class="literal">NULL</span>) &#123;</span><br><span class="line">         <span class="built_in">NSDictionary</span> <em>eDict =</em></span><br><span class="line">         [<span class="built_in">NSDictionary</span> dictionaryWithObject:<span class="string">@”open database failed”</span></span><br><span class="line">         forKey:<span class="built_in">NSLocalizedDescriptionKey</span>];</span><br><span class="line">         error =</span><br><span class="line">         [<span class="built_in">NSError</span> errorWithDomain:kSqliteErrorDomain code:rc userInfo:eDict];</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> rc;</span><br><span class="line"> &#125;</span><br><span class="line">     rc = sqlite3_exec(database, [sql UTF8String], <span class="literal">NULL</span>, <span class="literal">NULL</span>, &amp;amp;errmsg);</span><br><span class="line">     <span class="keyword">if</span> (rc != SQLITE_OK) &#123;</span><br><span class="line">         <span class="keyword">if</span> (error != <span class="literal">NULL</span>) &#123;</span><br><span class="line">             <span class="built_in">NSDictionary</span> <em>eDict =</em></span><br><span class="line">             [<span class="built_in">NSDictionary</span> dictionaryWithObject:<span class="string">@”exec sql error”</span></span><br><span class="line">             forKey:<span class="built_in">NSLocalizedDescriptionKey</span>];</span><br><span class="line">             error =</span><br><span class="line">             [<span class="built_in">NSError</span> errorWithDomain:kSqliteErrorDomain code:rc userInfo:eDict];</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="built_in">NSLog</span>(<span class="string">@”%s”</span>, errmsg);</span><br><span class="line">         sqlite3_free(errmsg);</span><br><span class="line">     &#125;</span><br><span class="line">     [<span class="keyword">self</span> close];</span><br><span class="line">     <span class="keyword">return</span> rc;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<p>上面函数中sqlite3_free就是释放存放错误信息的内存空间。<br><br>查询操作会略显复杂，同样需要有开关数据库的操作，不过有一个准备结果集和最后释放结果集的操作，分别是sqlite3_prepare_v2和sqlite3_finalize，sqlite3_stmt就是结果集，下面就是具体操作。</p>
+
+<p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">[self open];</span><br><span class="line"> <span class="comment">// 查</span></span><br><span class="line"> strsql = <span class="string">“select <em> from users”</em></span>;</span><br><span class="line"> <span class="comment">// SQLITE_API int sqlite3_prepare_v2(</span></span><br><span class="line"> <span class="comment">// sqlite3 db, /<em> Database handle </em>/</span></span><br><span class="line"> <span class="comment">// const char <em>zSql, /</em> SQL statement<em>/</em></span></span><br><span class="line"> <span class="comment">// int nByte, / 结果集的最大长度。<em>/</em></span></span><br><span class="line"> <span class="comment">// sqlite3_stmt **ppStmt, / OUT: 结果集 <em>/</em></span></span><br><span class="line"> <span class="comment">// const char **pzTail / OUT:指向结果集没有用到的内存部分的指针。 <em>/</em></span></span><br><span class="line"> <span class="comment">// );</span></span><br><span class="line"> sqlite3_stmt rc;<span class="comment">//陈述式句柄</span></span><br><span class="line"> <span class="keyword">if</span> (sqlite3_prepare_v2(db, strsql, -<span class="number">1</span>, &amp;amp;rc, <span class="literal">NULL</span>)!=SQLITE_OK) &#123;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="comment">// sqlite3_step讲结果集数据指针指向下一个元素。</span></span><br><span class="line"> <span class="comment">// 这个函数的返回值如果是SQLITE_ROW就表示我们的结果集里面有数据。</span></span><br><span class="line"> <span class="comment">// 否则我们的结果集就是空的。</span></span><br><span class="line"> <span class="keyword">while</span> (sqlite3_step(rc)==SQLITE_ROW) &#123;</span><br><span class="line"> <span class="comment">// sqlite3_column系列函数。一般有两个输入参数。第一个是结果集指针，第二是数据所在列的序号。</span></span><br><span class="line"> <span class="comment">// 比如我们现在用的sqlite3_column_int和sqlite3_column_text。</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">“id:%d | username:%s | password:%s \n”</span>,sqlite3_column_int(rc, <span class="number">0</span>),sqlite3_column_text(rc, <span class="number">1</span>),sqlite3_column_text(rc, <span class="number">2</span>));     </span><br><span class="line"> &#125;</span><br><span class="line"> <span class="comment">// 查完后一定要释放结果集。</span></span><br><span class="line"> sqlite3_finalize(rc);</span><br><span class="line"> [self close];</span><br></pre></td></tr></table></figure></p>
+<p></p><h3>数据库加密</h3><p></p><br><p>免费版的SQLite有一个致命缺点：不支持加密。这就导致存储在SQLite中的数据可以被任何人用任何文本编辑器查看到。<br><br>对数据库加密的思路有两种：<br><br>1. 将内容加密后再写入数据库<br><br>这种方式使用简单，在入库/出库只需要将字段做对应的加解密操作即可，一定程度上解决了将数据赤裸裸暴露的问题。<br><br>不过这种方式并不是彻底的加密，因为数据库的表结构等信息还是能被查看到。另外写入数据库的内容加密后，搜索也是个问题。<br><br>2. 对数据库文件加密<br><br>将整个数据库整个文件加密，这种方式基本上能解决数据库的信息安全问题。目前已有的SQLite加密基本都是通过这种方式实现的。这里就介绍一个开源的加密工具SQLCipher，安装方法可以参照官网文档，<a target="_blank" href="https://www.zetetic.net/sqlcipher/ios-tutorial/" title="https://www.zetetic.net/sqlcipher/ios-tutorial/">https://www.zetetic.net/sqlcipher/ios-tutorial/</a>，SQLCipher使用256-bit AES加密，由于其基于免费版的SQLite，主要的加密接口和SQLite是相同的，但也增加了一些自己的接口。<br><br>其实SQLite的两个加密函数使用起来非常的简单，下面分情况说明：<br><br>1 给一个未加密的数据库添加密码：如果想要添加密码，则可以在打开数据库文件之后，关闭数据库文件之前的任何时刻调用sqlite3_key函数即可，该函数有三个参数，其中第一个参数为数据库对象，第二个参数是要设定的密码，第三个是密码的长度。例如：sqlite3_key(db,&#8221;1q2w3e4r&#8221;,8); //给数据库设定密码1q2w3e4r<br><br>2 读取一个加密数据库中的数据：完成这个任务依然十分简单，你只需要在打开数据库之后，再次调用一下sqlite3_key函数即可，例如，数据库密码是123456时，你只需要在代码中加入sqlite3_key(db,&#8221;123456&#8243;,6);<br><br>3更改数据库密码：首先你需要使用当前的密码正确的打开数据库，之后你可以调用sqlite3_rekey(db,&#8221;112233&#8243;,6) 来更改数据库密码。<br><br>4 删除密码：也就是把数据库恢复到明文状态。这时你仍然只需要调用sqlite3_rekey函数，并且把该函数的第二个参数置为NULL或者&#8221;&#8221;,或者把第三个参数设为0。</p><br><h3>事务操作</h3><br><p>那么问题又来了，如果iOS的sqlite同时插入或者查询10000条数据，你该怎么办？<br><br>这里有三步要做，第一，减少开关数据库操作，插入10000条数据，不能开关10000次数据库，只能进行一次开关；<br><br>第二，就是不能放在主线程；<br><br>第三，最重要的一点就是加入事务操作。<br><br>事务(Transaction)是访问并可能更新数据库中各种数据项的一个程序执行单元(unit)。在sqlite插入数据的时候默认一条语句就是一个事务，有多少条数据就有多少次磁盘操作。所以10000次磁盘操作可能几分钟都做不完，这个时候需要把10000条语句都封装成一个事务。<br><br>下面就是开始事务和提交事务的代码了</p>
+
+<p><figure class="highlight zephir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">-(<span class="keyword">int</span>)beginService&#123;</span><br><span class="line">     <span class="keyword">char</span> <em>errmsg;</em></span><br><span class="line">     <span class="keyword">int</span> rc = sqlite3_exec(database, <span class="string">“BEGIN transaction”</span>, <span class="keyword">NULL</span>, <span class="keyword">NULL</span>, &amp;amp;errmsg);</span><br><span class="line">     <span class="keyword">return</span> rc;</span><br><span class="line"> &#125;</span><br><span class="line">-(<span class="keyword">int</span>)commitService&#123;</span><br><span class="line">     <span class="keyword">char</span> errmsg;</span><br><span class="line">     <span class="keyword">int</span> rc = sqlite3_exec(database, <span class="string">“COMMIT transaction”</span>, <span class="keyword">NULL</span>, <span class="keyword">NULL</span>, &amp;amp;errmsg);</span><br><span class="line">     <span class="keyword">return</span> rc;</span><br><span class="line">&#125;&lt;/pre&gt;</span><br><span class="line">&lt;p&gt;接下来就把三个操作合并&lt;/p&gt;</span><br><span class="line">&lt;pre lang=<span class="string">“objc”</span> escaped=<span class="string">“true”</span> style=<span class="string">“background: #E8F2FB ;”</span>&gt;-(<span class="keyword">int</span>)addModelsTest:(NSArray <em>)models error:(NSError **) error&#123;</em></span><br><span class="line">     <span class="keyword">char</span> errmsg;</span><br><span class="line">     <strong>block NSMutableArray *sqls=[NSMutableArray <span class="keyword">array</span>];</strong></span><br><span class="line">     block NoticeModel <em>aModel=[[NoticeModel alloc] init];</em></span><br><span class="line">     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, <span class="number">0</span>), ^&#123;</span><br><span class="line">         <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&amp;lt;<span class="number">100000</span>; i++) &#123;</span><br><span class="line">             aModel=[models objectAtIndex:<span class="number">0</span>];</span><br><span class="line">             NSString sql=[NSString stringWithFormat:@<span class="string">“insert into notices     values(‘%lf’,’%d’,’%@’,’%@’,’%@’,’%d’,’%d’,’%d’,’%d’,’%@’)”</span>,aModel.myID,aModel.news_id,aModel.news_title,aModel.content,aModel.pic,aModel.sort,aModel.record_status,aModel.counter,aModel.suid,aModel.publish_time];</span><br><span class="line">             [sqls addObject:sql];</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">int</span> r1=[<span class="keyword">self</span> open];</span><br><span class="line">         [<span class="keyword">self</span> beginService];</span><br><span class="line">         <span class="keyword">int</span> rc;</span><br><span class="line">         <span class="keyword">int</span> i;</span><br><span class="line">         <span class="keyword">for</span> (i=<span class="number">0</span>; i&amp;lt;<span class="number">100000</span>; i++) &#123;</span><br><span class="line">             rc=sqlite3_exec(database, [[sqls objectAtIndex:i] UTF8String], <span class="keyword">NULL</span>, <span class="keyword">NULL</span>, &amp;amp;errmsg);</span><br><span class="line">         &#125;</span><br><span class="line">         [<span class="keyword">self</span> commitService];</span><br><span class="line">         [<span class="keyword">self</span> close];</span><br><span class="line">         <span class="keyword">if</span> (i ==<span class="number">100000</span>) &#123;</span><br><span class="line">             dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                 NSLog(@<span class="string">“call back, the data is: %@”</span>, i);</span><br><span class="line">             &#125;);</span><br><span class="line">         &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">             NSLog(@<span class="string">“error when download:%@”</span>, error);</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;);</span><br><span class="line">     <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<p> 注：① ACID，是指在可靠数据库管理系统（DBMS）中，事务(transaction)所应该具有的四个特性：原子性（Atomicity）、一致性（Consistency）、隔离性（Isolation）、持久性（Durability）. 原子性意味着数据库中的事务执行是作为原子。即不可再分，整个语句要么执行，要么不执行。一致性指数据库事务不能破坏关系数据的完整性以及业务逻辑上的一致性。例如对银行转帐事务，不管事务成功还是失败，应该保证事务结束后ACCOUNTS表中Tom和Jack的存款总额为2000元。事务的隔离性是多个用户并发访问数据库时，数据库为每一个用户开启的事务，不能被其他事务的操作数据所干扰，多个并发事务之间要相互隔离。持久性是指一个事务一旦被提交，它对数据库中数据的改变就是永久性的，接下来即使数据库发生故障也不应该对其有任何影响。</p><br><p> —-本文为转载，如有侵权，请及时告知，谢谢！</p>
+    
+  </div>
+</article>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+ <span id="busuanzi_container_page_pv">
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</span>
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal-one" aria-hidden="true">
+  <a href="#close" class="cover" aria-hidden="true"></a>
+  <div class="modal-dialog">
+    <div class="modal-header">
+      <a href="#close" class="btn-close" aria-hidden="true">关闭</a>
+    </div>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="" data-title="iOS的SQLite简单使用" data-url="http://coderykw.com/2015/02/05/sqlite/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"coderykw"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?343', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

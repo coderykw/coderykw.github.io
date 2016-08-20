@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+
+<html class="light">
+
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>讯飞语音 | coderykw</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="讯飞," />
+  
+
+  <meta name="description" content="社会和产品的发展总是向着便利和智能的方法发展,对于手机的App来说也是如此.所以,现在的App都在缩减流程,优化使用体验,为的就是让用户用起来更加便利,提高App的入手度和用户粘性.那么另一方面的智能呢?一个比较简单智能的实现方法就是在输入的地方加上语音识别,在输出显示的时候加上语音合成,直接进行语音播报,那么是不是对于司机等来说就是一个智能的体现呢?
+现在做语音识别有一些不错的开放平台可以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="讯飞语音">
+<meta property="og:url" content="http://coderykw.com/2014/10/26/讯飞语音/index.html">
+<meta property="og:site_name" content="coderykw">
+<meta property="og:description" content="社会和产品的发展总是向着便利和智能的方法发展,对于手机的App来说也是如此.所以,现在的App都在缩减流程,优化使用体验,为的就是让用户用起来更加便利,提高App的入手度和用户粘性.那么另一方面的智能呢?一个比较简单智能的实现方法就是在输入的地方加上语音识别,在输出显示的时候加上语音合成,直接进行语音播报,那么是不是对于司机等来说就是一个智能的体现呢?
+现在做语音识别有一些不错的开放平台可以">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/005KqbSEgw1eyle52fn2gj31kw0etaev.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/005KqbSEgw1eylebbmst7j30f20fy772.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/005KqbSEgw1eymahpu0z2g309g0go0zo.gif">
+<meta property="og:updated_time" content="2016-08-20T10:29:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="讯飞语音">
+<meta name="twitter:description" content="社会和产品的发展总是向着便利和智能的方法发展,对于手机的App来说也是如此.所以,现在的App都在缩减流程,优化使用体验,为的就是让用户用起来更加便利,提高App的入手度和用户粘性.那么另一方面的智能呢?一个比较简单智能的实现方法就是在输入的地方加上语音识别,在输出显示的时候加上语音合成,直接进行语音播报,那么是不是对于司机等来说就是一个智能的体现呢?
+现在做语音识别有一些不错的开放平台可以">
+<meta name="twitter:image" content="http://ww3.sinaimg.cn/large/005KqbSEgw1eyle52fn2gj31kw0etaev.jpg">
+
+  
+
+  
+    <link rel="icon" href="http://upload.jianshu.io/collections/images/26113/1434248199.jpg?imageMogr/thumbnail/300x300">
+  
+
+  
+    <link rel="stylesheet" href="/css/forsigner.css">
+  
+
+  <link href="/css/styles.css?v=fece7435" rel="stylesheet">
+
+  
+
+  
+
+</head>
+
+<body>
+
+  
+    <a href="#modal-one" class="toolbox-mobile">盒子</a>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">讯飞开发步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-text">1 申请账号ID</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-text">2 导入讯飞SDK框架</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-text">语音识别</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#undefined"><span class="toc-text">有界面提示的语音识别</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#undefined"><span class="toc-text">无界面提示的语音识别</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-text">语音合成</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#undefined"><span class="toc-text">Demo下载</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-讯飞语音" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">讯飞语音</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2014.10.26</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>coderykw</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/OC/">OC</a>
+  </span>
+
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>   <span itemprop="articleBody"><p>社会和产品的发展总是向着便利和智能的方法发展,对于手机的App来说也是如此.所以,现在的App都在缩减流程,优化使用体验,为的就是让用户用起来更加便利,提高App的入手度和用户粘性.那么另一方面的智能呢?<br><a id="more"></a><br>一个比较简单智能的实现方法就是在输入的地方加上语音识别,在输出显示的时候加上语音合成,直接进行语音播报,那么是不是对于司机等来说就是一个智能的体现呢?</p></span></p>
+<p></p><p>现在做语音识别有一些不错的开放平台可以给我们直接提供使用,一家是科大讯飞开放平台,一家是百度语音开放平台.我个人比较喜欢讯飞,因为讯飞的优势是在大段文字的识别上,准确率比较高.这正好符合我的需求,这篇博客也主要讲的是讯飞语音SDK的使用.还是惯例,将科大讯飞的开放平台地址奉上.另外还有讯飞的SDK开发API和教程地址奉上<br><a href="http://www.xfyun.cn" target="_blank" rel="external">讯飞开放平台传送门</a><br><a href="http://www.xfyun.cn/doccenter/iOS" target="_blank" rel="external">讯飞开发API文档传送门</a></p><p></p>
+<p></p><p></p><h2>讯飞开发步骤</h2><br>讯飞开发教程上写的比较清楚也比较啰嗦,并不是一个最简洁的Demo.所以我在这篇博客里进行了一些适当的删减,争取做一个最简单的demo.<p></p><p></p>
+<p></p><p></p><h4>1 申请账号ID</h4>登陆到讯飞开放平台上,在用户菜单栏里就有创建我的应用.这里的登陆也可以采用第三方的方式.在创建应用的界面填写相关的信息即可.然后就会有一个SDK下载的链接.如果没有,直接去SDK下载中心按照三步选项去进行新的下载即可.这里不做过多的描述.<p></p><p></p>
+<p></p><p></p><h4>2 导入讯飞SDK框架</h4>下载下来的SDK包解压出来有三个文件夹,第一个市doc文件夹,不多说,肯定是开发文档,还有相关的作者信息什么的.最重要的是剩下的两个文件夹,一个是lib文件夹,这里存放的是讯飞SDK的类库文件,我们导入SDK就是导入的这里的文件.第三个文件夹是一个IOS的Demo演示工程.<br>1 添加静态库<br>新建一个IOS工程,将lib文件夹下的”iflyMSC.framework”文件拷贝到工程目录下,然后在工程配置文件的[Build Phases]-[Link Binary With Libraries]中通过[AddOther]<br>2 确认SDK路径<br>在配置文件中搜索”head”找到[Framework Search Paths],点开查看SDK的路径是不是绝对路径,如果是如下图的样子,那就没问题了.这一步主要是确保SDK的路径为相对路径,防止工程换了文件夹位置就无法运行的情况的发生.<br><img src="http://ww3.sinaimg.cn/large/005KqbSEgw1eyle52fn2gj31kw0etaev.jpg"><br>3 添加框架<br>按照下图依次将图中的所有的框架添加到工程里面.讯飞官网API中给出的截图是XCode7以前的,XCode7之后一些动态链接库的后缀名发生了改变,Xcode7中添加完毕之后如下图:<br><img src="http://ww4.sinaimg.cn/large/005KqbSEgw1eylebbmst7j30f20fy772.jpg"><p></p><p></p>
+<p></p><p></p><h4>语音识别</h4><br>语音识别分两种,分别用在不同的场合,一个是界面提示的语音识别,一个是无界面提示的语音识别,这里以有界面提示的语音识别为例子.<p></p><p></p>
+<h5>有界面提示的语音识别</h5>
+
+<p></p><p>1 导入头文件</p><p></p>
+<pre>//将讯飞SDK中的所有类都导入进来
+#import < iflyMSC/iflyMSC.h >
+</pre>
+
+<p></p><p>2 登陆讯飞服务器<br>在使用讯飞的语音解析之前,需要进行用户身份验证,即登陆讯飞服务器,这个在viewDidLoad()方法中添加两行代码即可.后面的ID数字就是之前我们在开放平台创建按自己应用时给的APPID,在下载的SDK中也是有的.</p><p></p>
+<pre>NSString *initString = [[NSString alloc] initWithFormat:@"appid=%@",@"565e4dd9"];
+[IFlySpeechUtility createUtility:initString];
+</pre>
+
+<p></p><p>3 创建有界面提示的语音识别对象<br>创建一个讯飞语音识别对象,可以对他进行一系列的调用<br><pre>@property (nonatomic, strong) IFlyRecognizerView *iflyRecognizerView;//带界面的识别对象<br></pre></p><p></p>
+<p></p><p>4 初始化带界面的识别对象<br>前面声明了一个带界面的语音识别对象,现在需要对这个识别对象进行初始化,同样是在ViewDidLoad()方法中进行就行.</p><p></p>
+<pre>#pragma mark ------ 进行有界面的语音识别的初始化
+_iflyRecognizerView = [[IFlyRecognizerView alloc] initWithCenter:self.view.center];
+_iflyRecognizerView.delegate = self;
+[_iflyRecognizerView setParameter: @"iat" forKey: [IFlySpeechConstant IFLY_DOMAIN]];
+//asr_audio_path保存录音文件名，如不再需要，设置value为nil表示取消，默认目录是documents
+[_iflyRecognizerView setParameter:@"asrview.pcm " forKey:[IFlySpeechConstant ASR_AUDIO_PATH]];
+</pre>
+
+<p></p><p>5 实现代理方法<br>讯飞对识别结果的处理采用的代理回调的方法,实现IFlySpeechSynthesizerDelegate协议的onResult:isLast:方法.<br>注意!!!!这里的是onResult,不是onResults,后者是无界面提示的语音解析的结果回调函数.</p><p></p>
+<pre>- (void)onResult: (NSArray *)resultArray isLast:(BOOL) isLast
+{
+    NSMutableString *result = [[NSMutableString alloc] init];
+    NSDictionary *dic = [resultArray objectAtIndex:0];
+    for (NSString *key in dic) {
+        [result appendFormat:@"%@",key];
+    }
+    NSString * resu = [ISRDataHelper stringFromJson:result];
+    //将结果显示在界面的Label上
+    _text.text = [NSString stringWithFormat:@"%@%@",_text.text,resu];
+}
+</pre>
+这里默认的传回来的是Json字符串,需要对字符串进行解析.当然,讯飞还是比较良心的,在demo中给提供了一个解析类,就是上面用到的ISRDataHelper.用它来进行解析就可以了.
+
+6 触发开始语音识别
+拖动一个Button,给一个响应事件,用于开始监听语音识别
+<pre>//启动识别服务
+[_iflyRecognizerView start];</pre>
+
+<p></p><p>这个时候运行App,就可以进行语音识别了,运行的结果应该如下图:<br><img src="http://ww2.sinaimg.cn/large/005KqbSEgw1eymahpu0z2g309g0go0zo.gif"></p><p></p>
+<p></p><p></p><h5>无界面提示的语音识别</h5><br>无界面提示的语音识别适合将语音识别放在后台,这个看具体的使用场景.无界面的方式相对来说简洁大方,可制定性高.<br>1 导入头文件<p></p><p></p>
+<pre>//将讯飞SDK中的所有类都导入进来
+#import < iflyMSC/iflyMSC.h >
+</pre>
+
+<p></p><p>2 登陆讯飞服务器<br>在使用讯飞的语音解析之前,需要进行用户身份验证,即登陆讯飞服务器,这个在viewDidLoad()方法中添加两行代码即可.后面的ID数字就是之前我们在开放平台创建按自己应用时给的APPID,在下载的SDK中也是有的.</p><p></p>
+<pre>NSString *initString = [[NSString alloc] initWithFormat:@"appid=%@",@"565e4dd9"];
+[IFlySpeechUtility createUtility:initString];
+</pre>
+
+<p></p><p>3 创建无界面提示的语音识别对象<br>创建一个讯飞语音识别对象,可以对他进行一系列的调用<br><pre>@property (nonatomic, strong) IFlySpeechRecognizer *iFlySpeechRecognizer;//不带界面的识别对象<br></pre></p><p></p>
+<p></p><p>4 对象初始化<br>前面声明了一些在语音合成的时候会用到的对象,现在需要对前面的对象进行初始化.还是在ViewDidLoad()里面进行就可以了.这里的初始化内容比较多,是进行一些语音的设置,所以单独做成了一个方法,在ViewDidLoad()中进行调用即可.</p><p></p>
+<pre>-(void)initRecognizer{
+//单例模式，无UI的实例
+if (_iFlySpeechRecognizer == nil) {
+   _iFlySpeechRecognizer = [IFlySpeechRecognizer sharedInstance];            [_iFlySpeechRecognizer setParameter:@"" forKey:[IFlySpeechConstant PARAMS]];
+   //设置听写模式
+   [_iFlySpeechRecognizer setParameter:@"iat" forKey:[IFlySpeechConstant IFLY_DOMAIN]];
+}
+_iFlySpeechRecognizer.delegate = self;    
+if (_iFlySpeechRecognizer != nil) {
+   IATConfig *instance = [IATConfig sharedInstance];     
+   //设置最长录音时间
+   [_iFlySpeechRecognizer setParameter:instance.speechTimeout forKey:[IFlySpeechConstant SPEECH_TIMEOUT]];
+   //设置后端点
+   [_iFlySpeechRecognizer setParameter:instance.vadEos forKey:[IFlySpeechConstant VAD_EOS]];
+    //设置前端点
+    [_iFlySpeechRecognizer setParameter:instance.vadBos forKey:[IFlySpeechConstant VAD_BOS]];
+    //网络等待时间
+    [_iFlySpeechRecognizer setParameter:@"20000" forKey:[IFlySpeechConstant NET_TIMEOUT]];    
+    //设置采样率，推荐使用16K
+    [_iFlySpeechRecognizer setParameter:instance.sampleRate forKey:[IFlySpeechConstant SAMPLE_RATE]];    
+    if ([instance.language isEqualToString:[IATConfig chinese]]) {
+        //设置语言
+        [_iFlySpeechRecognizer setParameter:instance.language forKey:[IFlySpeechConstant LANGUAGE]];
+        //设置方言
+        [_iFlySpeechRecognizer setParameter:instance.accent forKey:[IFlySpeechConstant ACCENT]];
+    }else if ([instance.language isEqualToString:[IATConfig english]]) {
+        [_iFlySpeechRecognizer setParameter:instance.language forKey:[IFlySpeechConstant LANGUAGE]];
+    }
+    //设置是否返回标点符号
+    [_iFlySpeechRecognizer setParameter:instance.dot forKey:[IFlySpeechConstant ASR_PTT]];    
+}
+}
+</pre>
+
+<p></p><p>5 实现代理方法<br>讯飞对识别结果的处理采用的代理回调的方法,实现IFlySpeechSynthesizerDelegate协议的onResult:isLast:方法.<br>注意!!!!这里的是onResults,不是onResult,前者是有界面提示的语音识别的结果回调函数.</p><p></p>
+<pre>- (void) onResults:(NSArray *) results isLast:(BOOL)isLast{
+    NSMutableString *result = [[NSMutableString alloc] init];
+    NSDictionary *dic = [results objectAtIndex:0];
+    for (NSString *key in dic) {
+        [result appendFormat:@"%@",key];
+    }
+    NSString * resu = [ISRDataHelper stringFromJson:result];
+    _text.text = [NSString stringWithFormat:@"%@%@",_text.text,resu];
+}</pre>
+
+<p></p><p>6 触发语音合成<br>添加一个输入框,一个button,button的响应时间是将输入框中的文本内容读出来.</p><p></p>
+<pre>if(_iFlySpeechRecognizer == nil)
+{
+    [self initRecognizer];
+}
+[_iFlySpeechRecognizer cancel];
+//设置音频来源为麦克风
+[_iFlySpeechRecognizer setParameter:IFLY_AUDIO_SOURCE_MIC forKey:@"audio_source"];
+//设置听写结果格式为json
+[_iFlySpeechRecognizer setParameter:@"json" forKey:[IFlySpeechConstant RESULT_TYPE]];
+//保存录音文件，保存在sdk工作路径中，如未设置工作路径，则默认保存在library/cache下
+[_iFlySpeechRecognizer setParameter:@"asr.pcm" forKey:[IFlySpeechConstant ASR_AUDIO_PATH]];
+[_iFlySpeechRecognizer setDelegate:self];
+BOOL ret = [_iFlySpeechRecognizer startListening];
+</pre>
+
+
+<p></p><p></p><h4>语音合成</h4><br>语音合成和语音识别的过程差不多<br>1 导入头文件<p></p><p></p>
+<pre>//将讯飞SDK中的所有类都导入进来
+#import < iflyMSC/iflyMSC.h >
+#import "PcmPlayer.h"
+#import "TTSConfig.h"
+</pre>
+
+<p></p><p>2 登陆讯飞服务器<br>在使用讯飞的语音解析之前,需要进行用户身份验证,即登陆讯飞服务器,这个在viewDidLoad()方法中添加两行代码即可.后面的ID数字就是之前我们在开放平台创建按自己应用时给的APPID,在下载的SDK中也是有的.</p><p></p>
+<pre>NSString *initString = [[NSString alloc] initWithFormat:@"appid=%@",@"565e4dd9"];
+[IFlySpeechUtility createUtility:initString];
+</pre>
+
+<p></p><p>3 创建有界面提示的语音识别对象<br>创建一个讯飞语音识别对象,可以对他进行一系列的调用</p><p></p>
+<pre>
+typedef NS_OPTIONS(NSInteger, SynthesizeType) {
+    NomalType           = 5,//普通合成
+    UriType             = 6, //uri合成
+};
+@property (nonatomic, strong) IFlySpeechSynthesizer * iFlySpeechSynthesizer;//语音合成对象
+@property (nonatomic, strong) PcmPlayer *audioPlayer;//用于播放音频的
+@property (nonatomic, assign) SynthesizeType synType;//是何种合成方式
+@property (nonatomic, assign) BOOL hasError;//解析过程中是否出现错误
+</pre>
+
+<p></p><p>4 对象初始化<br>前面声明了一些在语音合成的时候会用到的对象,现在需要对前面的对象进行初始化.还是在ViewDidLoad()里面进行就可以了.<br><figure class="highlight"><figcaption><span>*instance = [TTSConfig sharedInstance];</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if (instance == nil) &#123;&#10;    return;&#10;&#125;&#10;//&#21512;&#25104;&#26381;&#21153;&#21333;&#20363;&#10;if (_iFlySpeechSynthesizer == nil) &#123;&#10;    _iFlySpeechSynthesizer = [IFlySpeechSynthesizer sharedInstance];&#10;&#125;    &#10;_iFlySpeechSynthesizer.delegate = self;    &#10;//&#35774;&#32622;&#35821;&#36895;1-100&#10;[_iFlySpeechSynthesizer setParameter:instance.speed forKey:[IFlySpeechConstant SPEED]];    &#10;//&#35774;&#32622;&#38899;&#37327;1-100&#10;[_iFlySpeechSynthesizer setParameter:instance.volume forKey:[IFlySpeechConstant VOLUME]];    &#10;//&#35774;&#32622;&#38899;&#35843;1-100&#10;[_iFlySpeechSynthesizer setParameter:instance.pitch forKey:[IFlySpeechConstant PITCH]];   &#10; //&#35774;&#32622;&#37319;&#26679;&#29575;&#10; [_iFlySpeechSynthesizer setParameter:instance.sampleRate forKey:[IFlySpeechConstant SAMPLE_RATE]];&#10;//&#35774;&#32622;&#21457;&#38899;&#20154;&#10; [_iFlySpeechSynthesizer setParameter:instance.vcnName forKey:[IFlySpeechConstant VOICE_NAME]];</span><br></pre></td></tr></table></figure></p><p></p>
+<p></p><p>5 触发语音合成<br>添加一个输入框,一个button,button的响应时间是将输入框中的文本内容读出来.</p><p></p>
+<pre>if ([self.VoiceText.text isEqualToString:@""]) {
+    return;
+}
+if (_audioPlayer != nil && _audioPlayer.isPlaying == YES) {
+    [_audioPlayer stop];
+    }
+_synType = NomalType;
+self.hasError = NO;
+[NSThread sleepForTimeInterval:0.05];
+_iFlySpeechSynthesizer.delegate = self;
+[_iFlySpeechSynthesizer startSpeaking:self.VoiceText.text];
+</pre>
+
+<p></p><p></p><h4>Demo下载</h4><br>最终写完的demo如下,下面是传送门.<br><a href="/../sourceFile/语音识别Demo/语音Lesson.zip">demo传送门</a><p></p><br><p></p>
+
+    
+  </div>
+</article>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+ <span id="busuanzi_container_page_pv">
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</span>
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal-one" aria-hidden="true">
+  <a href="#close" class="cover" aria-hidden="true"></a>
+  <div class="modal-dialog">
+    <div class="modal-header">
+      <a href="#close" class="btn-close" aria-hidden="true">关闭</a>
+    </div>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="" data-title="讯飞语音" data-url="http://coderykw.com/2014/10/26/讯飞语音/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"coderykw"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?343', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
