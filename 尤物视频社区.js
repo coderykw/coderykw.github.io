@@ -9,7 +9,7 @@ var App={
             handler: function({data,rawData}) {
                 $ui.loading(false)
                 if(data.status!=1){
-                    $ui.toast("数据加载失败");
+                    $ui.toast("数据加载out");
                     return;
                 }
                 App.AllTabs = data.data1
