@@ -42,7 +42,7 @@ var App={
 
 $ui.render({
     props: {
-      title: "尤物社区 v0.1",
+      title: "尤物社区 v2.0",
       navButtons: [
         {
           title: "查找更新",
