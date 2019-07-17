@@ -166,7 +166,37 @@
 
  <img src="images/223.jpg" alt="Smiley face" width="250" height="291">																				
           
-
+<script type="text/javascript">
+  
+/* 鼠标特效 */
+var a_idx = 0;
+jQuery(document).ready(function($) {
+   $("body").click(function(e) {
+       var a = new Array("包子","大包子","小包子","肉包子","菜包子","豆沙包","素三鲜包子","肉三鲜包子","水煎包","小笼包","庆丰包子铺一锅端");
+    var $i = $("<span/>").text(a[a_idx]);
+       a_idx = (a_idx + 1) % a.length;
+       var x = e.pageX,
+       y = e.pageY;
+       $i.css({
+           "z-index": 999999999999999999999999999999999999999999999999999999999999999999999,
+           "top": y - 20,
+           "left": x,
+           "position": "absolute",
+           "font-weight": "bold",
+       });
+       $("body").append($i);
+       $i.animate({
+           "top": y - 180,
+           "opacity": 0
+       },
+       1500,
+          
+       function() {
+           $i.remove();
+       });
+   });
+});
+</script>
 
 
          
