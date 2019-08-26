@@ -57,6 +57,8 @@
       </a>
 
       <h1 id="title" text="好棒 の 羊毛站">好棒 の 羊毛站</h1>
+
+
 <!--       #00FFCC -->
       <ul class="text-center nav">
         <li class="item">
@@ -235,7 +237,20 @@
 
 
  <img src="images/223.jpg" alt="Smiley face" width="250" height="291">																				
-          
+ <script type="text/javascript">
+         
+    var i=0;
+    setInterval('changeColor()',500);
+        function changeColor(){
+            var div=document.getElementById('title'); //获得div元素
+            var colorArr=['#8A2BE2','#DEB887','#7FFF00','#008B8B','#FF1493']; //建立颜色库
+            if(i==colorArr.length){ 
+                    i=0;
+                }else{
+                    div.style.color=colorArr[i++%colorArr.length]; //循环颜色
+                }
+            }
+</script>         
          
 <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1275579987'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s5.cnzz.com/z_stat.php%3Fid%3D1275579987' type='text/javascript'%3E%3C/script%3E"));</script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
