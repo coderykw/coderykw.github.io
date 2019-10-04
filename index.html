@@ -225,7 +225,7 @@ document.getElementById("copyright").innerHTML = "Copyright © "+year+" 羊王";
 <script>
   var now = new Date();
   function createtime() {
-      var grt= new Date("04/28/2019 13:14:21");//此处修改你的建站时间或者网站上线时间
+      var grt= new Date("10/1/2018 13:14:21");//此处修改你的建站时间或者网站上线时间
       now.setTime(now.getTime()+250);
       days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
       hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
@@ -238,22 +238,6 @@ document.getElementById("copyright").innerHTML = "Copyright © "+year+" 羊王";
   }
   setInterval("createtime()",250);
 </script>	    
-<!-- <script language="javascript">
-function show_date_time(){window.setTimeout("show_date_time()",1000);BirthDay=new Date("10/1/2018 20:00:00");today=new Date();timeold=(today.getTime()-BirthDay.getTime());sectimeold=timeold/1000
-secondsold=Math.floor(sectimeold);msPerDay=24*60*60*1000
-e_daysold=timeold/msPerDay
-daysold=Math.floor(e_daysold);e_hrsold=(e_daysold-daysold)*24;hrsold=setzero(Math.floor(e_hrsold));e_minsold=(e_hrsold-hrsold)*60;minsold=setzero(Math.floor((e_hrsold-hrsold)*60));seconds=setzero(Math.floor((e_minsold-minsold)*60));document.getElementById('days').innerHTML="本站已运行"+daysold+"天"+hrsold+"时"+minsold+"分"+seconds+"秒";}function setzero(i){if (i<10){i="0" + i};return i;}show_date_time();</script> -->
-<!-- <br>
-本站已稳定运行了
-<strong><script type="text/javascript">
-var urodz= new Date("10/29/2018");
-var now = new Date();
-var ile = now.getTime() - urodz.getTime();
-var dni = Math.floor(ile / (1000 * 60 * 60 * 24));
-document.write(+dni)
-</script>
-</strong>天
-<br> -->
       </div>
 	    <!-- 不蒜子计数 -->
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -267,7 +251,7 @@ document.write(+dni)
 $(document).ready(function() {
 
     var int = setInterval(fixCount, 50);  // 50ms周期检测函数
-    var countOffset = 20000;  // 初始化首次数据
+    var countOffset = 0;  // 初始化首次数据
 
     function fixCount() {            
        if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
