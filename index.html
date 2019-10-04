@@ -224,7 +224,7 @@ document.getElementById("copyright").innerHTML = "Copyright © "+year+" 羊王";
 function show_date_time(){window.setTimeout("show_date_time()",1000);BirthDay=new Date("10/1/2018 20:00:00");today=new Date();timeold=(today.getTime()-BirthDay.getTime());sectimeold=timeold/1000
 secondsold=Math.floor(sectimeold);msPerDay=24*60*60*1000
 e_daysold=timeold/msPerDay
-daysold=Math.floor(e_daysold);e_hrsold=(e_daysold-daysold)*24;hrsold=setzero(Math.floor(e_hrsold));e_minsold=(e_hrsold-hrsold)*60;minsold=setzero(Math.floor((e_hrsold-hrsold)*60));seconds=setzero(Math.floor((e_minsold-minsold)*60));document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"时"+minsold+"分"+seconds+"秒";}function setzero(i){if (i<10){i="0" + i};return i;}show_date_time();</script>
+daysold=Math.floor(e_daysold);e_hrsold=(e_daysold-daysold)*24;hrsold=setzero(Math.floor(e_hrsold));e_minsold=(e_hrsold-hrsold)*60;minsold=setzero(Math.floor((e_hrsold-hrsold)*60));seconds=setzero(Math.floor((e_minsold-minsold)*60));document.getElementById('days').innerHTML="本站已运行"+daysold+"天"+hrsold+"时"+minsold+"分"+seconds+"秒";}function setzero(i){if (i<10){i="0" + i};return i;}show_date_time();</script>
 <!-- <br>
 本站已稳定运行了
 <strong><script type="text/javascript">
@@ -239,7 +239,7 @@ document.write(+dni)
       </div>
 	    <!-- 不蒜子计数 -->
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<span id="busuanzi_container_site_pv" style='display:none'>| 总访问量 <span id="busuanzi_value_site_pv"></span> 次 </span>
+<span id="busuanzi_container_site_pv" style='display:none'>本站这五天| 总访问量 <span id="busuanzi_value_site_pv"></span> 次 </span>
 <span id="busuanzi_container_site_uv" style='display:none'>| 总访客数 <span id="busuanzi_value_site_uv"></span> 人 </span>
 <!-- 不蒜子计数 -->	
 
