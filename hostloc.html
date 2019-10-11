@@ -1,0 +1,92 @@
+<!-- 羊王修改制作 官网 https://wohaobang.cn -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    <link rel="dns-prefetch" href="//www.hostloc.com" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="referrer" content="no-referrer">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>全球主机 - 每日访问空间20基础分</title>
+    <link rel="icon" type="image/x-icon" href="//www.hostloc.com/favicon.ico">
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft Yahei", "WenQuanYi Micro Hei", sans-serif;
+            background-color: #fdf6e3;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        div {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 100;
+        }
+        h1 {
+            text-align: center;
+        }
+        h4 {
+            text-align: center;
+        }
+        img {
+            width: 1px;
+            height: 1px;
+        }
+    </style>
+</head>
+<body>
+<h1>正在刷分中，等我刷新页面</h1>
+<h1>双击查看积分</h1>
+
+
+
+<footer>
+    <script>
+        //document.oncontextmenu = function () { return false; };
+        //document.onkeydown = function () { return false; };
+        (function () {
+            var s = document.createElement('script');
+            s.src = '//hm.baidu.com/hm.js?b80974a784c1807a572f8d52160788b1';
+            s.async = true;
+            var x = document.getElementsByTagName('script')[0];
+            x.parentNode.insertBefore(s, x);
+        })();
+        var maxUserId = 30000;
+        div = document.createElement("div");
+        div.id = "app";
+        document.body.appendChild(div);
+        document.getElementById("app").ondblclick = function () {
+            window.open("https://www.hostloc.com/");
+        };
+        for (var i = 0; i < 20; i++) {
+            setTimeout(function () {
+                addContent(Math.ceil(Math.random() * maxUserId));
+            }, i * 100 + 500);
+        }
+        setTimeout(function () {
+            document.getElementsByTagName("h1")[0].innerHTML = "刷好了老铁!";
+        }, 2000);
+        function addContent(userId) {
+            img = document.createElement("img");
+            img.src = "https://www.hostloc.com/home.php?mod=space&uid=" + userId + "&do=index.html";
+            document.body.appendChild(img);
+        }
+    </script>
+</footer>
+</body>
+</html>
