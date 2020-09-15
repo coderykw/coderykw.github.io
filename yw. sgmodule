@@ -1,7 +1,9 @@
 #!name=Script - All in one . By nzw9314
 #!desc=过滤脚本，删除用不到无用脚本。如果没有GITHUB，请复制到本地模块。
 #!system=ios
-
+[Rule]
+URL-REGEX,https://app.bilibili.com/x/v2/(splash|search/(defaultword|square)),REJECT
+URL-REGEX,https://api.bilibili.com/x/v2/dm/ad,REJECT
 [Script]
 # > yichahucha
 # > 京东比价
@@ -20,12 +22,6 @@ Aweme.js = script-path=https://choler.github.io/Surge/Script/Aweme.js,type=http-
 Aweme.js = script-path=https://choler.github.io/Surge/Script/Aweme.js,type=http-response,pattern=^https:\/\/.*\.(amemv|musical)\.(com|ly)\/aweme\/v.*\/(feed|post),requires-body=1,max-size=0
 # > 微信公众号
 WeChat.js = script-path=https://Choler.github.io/Surge/Script/WeChat.js,type=http-request,pattern=^https://mp\.weixin\.qq\.com/mp/getappmsgad
-# > YouTube
-YouTube.js = script-path=https://Choler.github.io/Surge/Script/YouTube.js,type=http-request,pattern=^https://[\s\S]*\.googlevideo\.com/.*&(oad|ctier)
-# >网易考拉 去广告
-wykaola.js = requires-body=1,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/wykaola.js,type=http-response,pattern=^https://sp\.kaola\.com/api/openad$
-# >腾讯新闻 去广告
-QQNews.js = requires-body=1,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/QQNews.js,type=http-response,pattern=^https://r\.inews\.qq.com\/get(QQNewsUnreadList|RecommendList)
 # > onewayticket255
 # > 知乎 去广告
 surge%20zhihu%20feed.js = requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/onewayticket255/Surge-Script/master/surge%20zhihu%20feed.js,type=http-response,pattern=https://api.zhihu.com/moments/recommend
@@ -33,10 +29,44 @@ surge%20zhihu%20recommend.js = requires-body=1,max-size=0,script-path=https://ra
 surge%20zhihu%20answer.js = requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/onewayticket255/Surge-Script/master/surge%20zhihu%20answer.js,type=http-response,pattern=https://api.zhihu.com/v4/questions
 surge%20zhihu%20people.js = requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/onewayticket255/Surge-Script/master/surge%20zhihu%20people.js,type=http-response,pattern=https://api.zhihu.com/people/
 
-# > NobyDa
-# > 哔哩哔哩番剧开启1080P+
-bilifj.js = requires-body=1,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/bilifj.js,type=http-response,pattern=^https?:\/\/api\.bilibili\.com\/pgc\/player\/api\/playurl
 
+# > 京东农场 (By liuxiaoyucc、lxk0301 & iepngs)
+# 京东App - 右下角"我的"- 游戏与互动- 东东农场
+京东农场= type=cron,cronexp=8 0 * * *,script-path=https://raw.githubusercontent.com/lxk0301/scripts/master/jd_fruit.js,wake-system=1
+
+# > 京东萌宠 (By liuxiaoyucc、lxk0301 & iepngs)
+# 京东App - 右下角"我的"- 游戏与互动-东东萌宠
+京东萌宠= type=cron,cronexp=8 0 * * *,script-path=https://raw.githubusercontent.com/lxk0301/scripts/master/jd_pet.js,wake-system=1
+
+# > 京东宠汪汪 (By uniqueque、lxk0301 & iepngs)
+# 京东App - 右下角"我的"- 游戏与互动-宠汪汪
+京东宠汪汪= type=cron,cronexp=0 */3 * * *,script-path=https://raw.githubusercontent.com/lxk0301/scripts/master/jd_joy.js,wake-system=1
+宠汪汪积分兑换奖品= type=cron,cronexp=0 0 0-16/8 * * *,script-path=https://raw.githubusercontent.com/lxk0301/scripts/master/jd_joy_reward.js,wake-system=1
+宠汪汪喂食= type=cron,cronexp=0 0 */3 * * *,script-path=https://raw.githubusercontent.com/lxk0301/scripts/master/jd_joy_feedPets.js,wake-system=1
+宠汪汪偷好友积分与狗粮= type=cron,cronexp=0 0,6 * * *,script-path=https://raw.githubusercontent.com/lxk0301/scripts/master/jd_joy_steal.js,wake-system=1
+
+# > 京东种豆得豆 (By uniqueque、lxk0301 & iepngs)
+# 京东App - 右下角"我的"- 游戏与互动-种豆得豆
+京东种豆得豆= type=cron,cronexp=8 7-21/3 * * *,script-path=https://raw.githubusercontent.com/lxk0301/scripts/master/jd_plantBean.js,wake-system=1
+
+# > 京东摇钱树 (By lxk0301)
+# 京东App - 右下角"我的"- 游戏与互动-摇钱树
+京东摇钱树=type=cron,cronexp=*/6 * * * *,script-path=https://raw.githubusercontent.com/lxk0301/scripts/master/jd_moneyTree.js,wake-system=1
+
+# > 京东加速 (By lxk0301)
+# 京东App - 右下角"我的"- 游戏与互动-天天加速
+京东加速=type=cron,cronexp=0 */3 * * *,script-path=https://raw.githubusercontent.com/lxk0301/scripts/master/jd_speed.js,wake-system=1
+
+# > 京东818手机节 (By lxk0301)
+京东818手机节=type=cron,cronexp=0 0-16/8 * * *,script-path=https://raw.githubusercontent.com/lxk0301/scripts/master/jd_818.js
+
+# > 取关京东店铺商品 (By lxk0301)
+取关京东店铺商品 = type=cron,cronexp=55 23 * * *,wake-system=1,timeout=20,script-path=https://raw.githubusercontent.com/lxk0301/scripts/master/jd_unsubscribe.js
+
+# > 京小超(By lxk0301)
+# 京东App - 右下角"我的"- 游戏与互动-京小超
+京小超-任务= type=cron,cronexp=0 5 0 * * *,script-path=https://raw.githubusercontent.com/lxk0301/scripts/master/jd_superMarket.js,wake-system=1
+京小超-小费= type=cron,cronexp=30 7 0 * * *,script-path=https://raw.githubusercontent.com/lxk0301/scripts/master/jd_blueCoin.js,wake-system=1
 # VUE pro
 VUE.js = requires-body=1,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/VUE.js,type=http-response,pattern=^https:\/\/api\.vuevideo\.net\/api\/v1\/(users\/.+\/profile|subtitle\/prepare)
 
@@ -47,12 +77,20 @@ VUE.js = requires-body=1,script-path=https://raw.githubusercontent.com/NobyDa/Sc
 ydybj.js = requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Alex0510/Eric/master/surge/Script/ydybj.js,type=http-response,pattern=https://note.youdao.com/yws/(mapi/payment|api/self)
 
 
-# > Dayone
-# 1.启用本脚本与 pre 脚本
-# 2.重启 Day One，稍等片刻等待高级版出现
-# 3.禁用掉 pre 脚本，重启 Day One，确认高级版状况不变
-# > workingcopy.js
-workingcopy.js = requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/langkhach270389/Scripting/master/workingcopy.js,script-update-interval=0,type=http-response,pattern=^https:\/\/education\.github\.com\/api\/user$
+# > 饿了么   (By @syzzzf)
+# 打开 APP, 访问下`我的`>`签到领红包`(左上角)
+饿了么 = type=cron,cronexp=35 4 0 * * *,script-path=https://raw.githubusercontent.com/songyangzz/QuantumultX/master/elem/elemSign.js,script-update-interval=0
+饿了么-打卡领红包= type=cron,cronexp=35 4 0 * * *,script-path=https://raw.githubusercontent.com/zZPiglet/Task/master/elem/elemCheckIn.js
 
+# > 欧可林 (By @zZPiglet)
+# 进入"欧可林"并点击"活动"
+欧可林 =type=cron,cronexp=0 0 10,21 * * *,script-path=https://raw.githubusercontent.com/zZPiglet/Task/master/Oclean/Oclean.js
+
+# > 微信小程序 - 欧可林商城 (By @zZPiglet)
+# 进入微信小程序"欧可林商城"并点击"每日任务"
+欧可林商城 =type=cron,cronexp=0 0 10,21 * * *,script-path=https://raw.githubusercontent.com/zZPiglet/Task/master/Oclean/Oclean_mini.js
+# > qq会员成长值签到 (By @lowking0415)
+# 手机qq进入左侧会员，滑动即可
+qq会员签到 = type=cron,cronexp=0 0 0,1 * * ?,wake-system=1,script-path=https://raw.githubusercontent.com/lowking/Scripts/master/QQVip/qqVipCheckIn.js,script-update-interval=0
 [MITM]
 hostname = %APPEND% *.googlevideo.com, trade-acs.m.taobao.com, api.m.jd.com, m.client.10010.com, note.youdao.com, api.weibo.cn, mapi.weibo.com, *.uve.weibo.com, mp.weixin.qq.com, api.bilibili.com, app.bilibili.com, *.zhihu.com, aweme*.snssdk.com, api*.tiktokv.com, *.musical.ly, *.amemv.com, p.du.163.com, sp.kaola.com, r.inews.qq.com, education.github.com, api.vuevideo.net
