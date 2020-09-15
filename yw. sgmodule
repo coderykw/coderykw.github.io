@@ -93,4 +93,4 @@ ydybj.js = requires-body=1,max-size=0,script-path=https://raw.githubusercontent.
 # 手机qq进入左侧会员，滑动即可
 qq会员签到 = type=cron,cronexp=0 0 0,1 * * ?,wake-system=1,script-path=https://raw.githubusercontent.com/lowking/Scripts/master/QQVip/qqVipCheckIn.js,script-update-interval=0
 [MITM]
-hostname = %APPEND% *.googlevideo.com, trade-acs.m.taobao.com, api.m.jd.com, m.client.10010.com, note.youdao.com, api.weibo.cn, mapi.weibo.com, *.uve.weibo.com, mp.weixin.qq.com, api.bilibili.com, app.bilibili.com, *.zhihu.com, aweme*.snssdk.com, api*.tiktokv.com, *.musical.ly, *.amemv.com, p.du.163.com, sp.kaola.com, r.inews.qq.com, education.github.com, api.vuevideo.net
+hostname = %APPEND% , trade-acs.m.taobao.com, api.m.jd.com, m.client.10010.com, note.youdao.com, api.weibo.cn, mapi.weibo.com, *.uve.weibo.com, mp.weixin.qq.com, api.bilibili.com, app.bilibili.com, *.zhihu.com, aweme*.snssdk.com, api*.tiktokv.com, *.musical.ly, *.amemv.com, p.du.163.com, sp.kaola.com, r.inews.qq.com, education.github.com, api.vuevideo.net
