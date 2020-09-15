@@ -1,4 +1,4 @@
-#!name=Script - All in one . By nzw9314
+#!name=Script - All in one . By yangwang
 #!desc=过滤脚本，删除用不到无用脚本。如果没有GITHUB，请复制到本地模块。
 #!system=ios
 [Rule]
