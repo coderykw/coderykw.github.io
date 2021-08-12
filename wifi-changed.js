@@ -9,7 +9,7 @@ if (wifiChanged()) {
     $surge.setOutboundMode('direct');
     $notification.post(
       'Surge',
-      Wi-Fi changed to ${$network.wifi.ssid},
+      `Wi-Fi changed to ${$network.wifi.ssid}`,
       'use direct mode'
     );
   } else {
@@ -17,7 +17,7 @@ if (wifiChanged()) {
     $surge.setOutboundMode('rule');
     $notification.post(
       'Surge',
-      Wi-Fi changed to ${$network.wifi.ssid},
+      `Wi-Fi changed to ${$network.wifi.ssid}`,
       'use rule-based proxy mode'
     );
   }
