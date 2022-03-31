@@ -18,7 +18,7 @@
 			<key>IsHotspot</key>
 			<false/>
 			<key>Password</key>
-			<string>123456</string>
+			<string>33333333</string>
 			<key>PayloadDescription</key>
 			<string>配置 Wi-Fi 设置</string>
 			<key>PayloadDisplayName</key>
@@ -32,13 +32,13 @@
 			<key>PayloadVersion</key>
 			<integer>1</integer>
 			<key>ProxyServer</key>
-			<string>192.168.6.242</string>
+			<string>192.168.31.145</string>
 			<key>ProxyServerPort</key>
 			<integer>7890</integer>
 			<key>ProxyType</key>
 			<string>Manual</string>
 			<key>SSID_STR</key>
-			<string>请输入wifi名称</string>
+			<string>ASUS_5G</string>
 		</dict>
 	</array>
 	<key>PayloadDisplayName</key>
